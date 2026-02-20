@@ -1,0 +1,47 @@
+.modernai{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.Aicontent{
+    background-color: #FCFCFA;
+    display: flex;
+    flex-direction: column;
+}
+
+.aiheading{
+    display: flex;
+    height: 4rem;
+    background-color: #7168f8;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+}
+
+.aiheading h2{
+    font-size: 2rem;
+}
+
+.Aicontent p{
+    text-align: justify;
+    font-size: 1.2rem;
+    word-spacing: 0.5rem;
+    font-weight: 500;
+    padding: 2rem 0 2rem 1rem;
+}
+
+.modernai img{
+    width: 100%;
+    height: auto;
+    max-height: 50rem;   /* adjust size */
+    aspect-ratio: 9/16;
+    object-fit: cover;
+}
+
+.Aiarticle{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

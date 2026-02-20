@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "How AI Generate Images",
+    "description": "AI image generation is a process where a computer creates new images using machine learning models. These models are trained on very large collections of pictures and learn patterns such as shapes, colors, objects, lighting, and textures. After training, the AI can produce new images that look realistic, artistic, or completely imaginary. Most modern image-generation systems use deep learning, especially a model type called a diffusion model. A diffusion model begins with random noise and gradually turns that noise into a clear picture. At each step, the AI removes some noise and adds more details based on what it has learned during training. When a user provides a text prompt, the system converts the text into a form the model can understand, and the AI creates an image that matches the description. AI-generated images can include portraits, landscapes, logos, abstract art, or photorealistic scenes. These images are widely used in design, entertainment, advertising, games, education, and content creation. However, because the system learns from existing images, it may sometimes reproduce unwanted patterns or biases. Despite such limitations, AI image generation remains one of the most advanced and creative applications of modern artificial intelligence.",
+    "image": "/image/medium-shot-girl-robot.jpg"
+  },
+  {
+    "id": 2,
+    "title": "How AI Generate Videos",
+    "description": "AI video generation is a process where a computer creates moving visuals using advanced machine learning models. The system learns motion, objects, scenes, and transitions by training on large collections of video data. After learning these patterns, the AI can produce new videos from text descriptions, images, or even short clips. Most modern AI video generators use deep learning techniques such as diffusion models, transformers, and generative adversarial networks (GANs). The generation process usually begins with random noise, similar to image generation. The AI gradually removes this noise and adds visual details frame by frame, creating smooth motion across the entire video. When a user gives a text prompt, the system converts the text into numerical representations that guide the visual generation, controlling the scene, objects, lighting, and movement. AI-generated videos can include animations, short clips, realistic scenes, motion graphics, or imaginary worlds. They are used in filmmaking, advertising, education, gaming, and content creation. While the quality has improved rapidly, AI video generation still faces challenges such as motion consistency, accurate human movement, physics realism, and maintaining high resolution across all frames. Despite these limitations, it is becoming one of the most powerful and creative technologies in modern artificial intelligence.",
+    "image": "/image/hands-holding-ai-neon-sign.jpg"
+  }
+]

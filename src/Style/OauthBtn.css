@@ -1,0 +1,7 @@
+.authbtn{
+    display: flex;
+    width: 25rem;
+    height: 2.5rem;
+    justify-content: center;
+    align-items: center;
+}

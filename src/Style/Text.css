@@ -1,0 +1,173 @@
+.text{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: 90%;
+}
+
+.text-detector-container{
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+/* Outer container */
+.textarea-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  background: #f6f6f7; /* light background like ChatGPT */
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Inner box (textarea + send button) */
+.maintext-container {
+  width: 95%;
+  max-width: 800px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  background: white;
+  border: 1px solid #dcdcdc;
+  padding: 0.7rem;
+  border-radius: 15px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+/* Textarea design */
+.maintext-container textarea {
+  flex: 1;
+  border: none;
+  resize: none;
+  outline: none;
+
+  font-size: 1rem;
+  padding: 0.6rem;
+  min-height: 40px;
+  max-height: 150px;
+  overflow-y: auto;
+
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+/* Button */
+.maintext-container button {
+  background: #535bf2;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.25s;
+}
+
+
+.intro-title{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: justify;
+}
+
+.intro-title h1{
+    filter: drop-shadow( 0 0 0.7rem #3d45d0);
+}
+
+.intro-title p{
+    color: #3d45d0;
+}
+
+.ai-result-container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.8rem;
+  
+  flex-direction: row;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.routed-text-container{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.routed-textarea{
+  width: 90%;
+  height: 90%;
+  resize: none;
+  pointer-events: none;
+  border: none;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.detected-text-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.detected-text-container p {
+  width: 70%;
+  margin: 0;
+}
+
+.text-stats {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid black;
+}
+
+.detected-text-container,
+.text-stats,
+.ai-probability,
+.human-probability {
+  min-height: 0;   /* VERY IMPORTANT for flex + SVG */
+  min-width: 0;
+}
+
+
+
+.ai-probability,
+.human-probability {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+
+.ai-probability p , .human-probability p{
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+
+/* Button hover effect */
+.maintext-container button:hover {
+  background: #3d45d0;
+}

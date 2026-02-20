@@ -1,0 +1,33 @@
+.whyneedcontainer{
+    width: 100%;
+    height: auto;
+    min-height: 10rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.whyneedcontainer .heading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 2rem 0;
+    background-color: #535BF2;
+    color: white;
+}
+
+.whyneedcontainer .content{
+    height: auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    min-height: auto;
+    padding: 0 1rem ;
+}
+
+.imagesection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

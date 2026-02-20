@@ -1,0 +1,9 @@
+.panelbtn{
+    width: 8rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 0.8rem;
+    color :#646cff;
+}

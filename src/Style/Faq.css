@@ -1,0 +1,47 @@
+/* FAQ main column should only grow as its children need */
+.faqmain{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* space between faq items */
+  align-self: start; /* ensure it doesn't stretch the grid cell */
+}
+
+/* Each FAQ item: keep margins small so they don't add unexpected height */
+.faq {
+  width: 100%;
+  padding: 0.6rem 0;
+  margin: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+/* keep answer collapsed when not rendered — when you render it, it will take only needed height */
+.answer {
+  padding-top: 0.5rem;
+  margin: 0;
+  /* If you later animate height, use overflow hidden */
+  overflow: hidden;
+}
+
+
+.arrow{
+  width: 2rem;
+  height: 2rem;
+    padding: 0.5rem;
+}
+
+.arrow:hover{
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgb(196, 196, 196);
+    transition: 0.1s background-color;
+}
+

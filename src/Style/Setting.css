@@ -1,0 +1,9 @@
+.setting-overlay-container{
+    display: flex;
+    width: 30%;
+    height: 70%;
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    margin: 5rem 0 0 0;
+}

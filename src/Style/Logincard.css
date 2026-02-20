@@ -1,0 +1,168 @@
+.usercard{
+    width: 30rem;
+    height: 35rem;
+    background-color: white;
+    border-radius: 0.8rem;
+     box-shadow: 0px 4px 32px 0px rgba(100, 149, 237, 0.50);
+}
+
+.usercard .crossContainer{
+    width: 100%;
+    display: flex;
+    justify-content:right;
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+}
+
+.crossContainer .crossicon{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.crossContainer .crossicon:hover{
+    cursor: pointer;
+    background-color: #00000050;
+}
+
+
+.loginHeadingContainer , .signupHeadingContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginBlock , .signupBlock{
+    height: 2rem;
+    width: 6rem;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr ;
+    align-items: center;
+    justify-content: center;
+    /* box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.50); */
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+}
+
+.signupBlock{
+    width: 10rem;
+    grid-template-columns: 0.4fr 0.6fr;
+}
+
+.exitdooricon , .enterdooricon{
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.enterdooricon{
+    padding-left: 1.5rem;
+}
+.loginBlock p , .signupBlock p{
+    padding-bottom: 0.2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.contentContainer{
+    display: grid;
+    height: 31rem;
+    grid-template-rows: 0.6fr 0.1fr 0.2fr 0.1fr;
+}
+
+.loginform , .Oauth-section , .signupform{
+    display: grid;
+    grid-template-columns: auto;
+    padding: 2rem 0;
+    justify-content: center;
+
+}
+
+.loginform{
+    position: relative;
+}
+
+.signupform{
+    padding: 1rem 0 1rem 0;
+    position: relative;
+}
+
+.inputcontainer{
+    position: relative;
+}
+
+.credential-section .loginform .logininput , .loginlabel , .loginbtn , .credential-section .signupform .signupinput , .signupbtn{
+    width: 25rem;
+    height: 2.5rem;
+}
+
+.loginbtn , .signupbtn{
+    background-color: #646cff;
+    color: #fff;
+    border-radius: 0.4rem;
+    margin: 1rem 0;
+}
+
+.signupbtn{
+    margin: 0.5rem 0 0 0;
+}
+.loginlabel , .signuplabel{
+    padding: 1rem 0 0 0;
+}
+.loginform .logininput , .signupform .signupinput{
+  border: 2px solid transparent;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #F3F3F3;
+  border-radius: 10px;
+  transition: all 0.5s;
+  margin-bottom: 1rem;
+}
+
+.inputcontainer .cardError , .signupform .serverError ,  .loginform .serverError{
+    margin: 0;
+    padding: 0 0 0 0.5rem;
+    position: absolute;
+    bottom: 0;
+    color: red;
+    font-size: 0.8rem;
+}
+
+.signupform .serverError , .loginform .serverError{
+    text-align: center;
+    padding: 0;
+    right: 50%;
+    bottom : -0.5rem;
+    font-size: 1rem;    
+}
+
+.otherFeatures{
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginform .logininput:hover,
+.loginform .logininput:focus ,
+.signupform .signupinput:hover,
+.signupform .signupinput:focus {
+  border: 2px solid #4A9DEC;
+  box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  background-color: white;
+}
+
+.Oauth-section{
+    padding: 0.5rem 0;
+}
+
+.noaccountmsg{
+    text-align: center;
+}
+
+.switchcard{
+    cursor: pointer;
+}
+
+.switchcard:hover{
+    opacity :0.7;
+}

@@ -1,0 +1,50 @@
+.btn {
+    width: fit-content;
+    min-width: 12rem;
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Added for vertical alignment */
+    border-radius: 1.2rem;
+    background-color: #646cff;
+    color: #fff;
+    padding: 1rem; /* Added padding */
+    overflow: hidden; 
+    cursor: pointer; /* Makes it clear it's clickable */
+}
+
+.btn span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0.2rem;
+    transition: width 0.3s ease, opacity 0.3s ease, font-size 0.3s ease, transform 0.3s ease;
+}
+
+/* Specific styles for the text span (Span 1) */
+.btn .text-span {
+    width: auto;
+    opacity: 1;
+    white-space: nowrap;
+}
+
+/* Specific styles for the icon span (Span 2) */
+.btn .icon-span {
+    width: fit-content;
+    font-size: 1.2rem;
+}
+
+/* Styles when hovering over the button */
+.btn:hover .text-span {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0; /* Ensures absolutely no space is taken up */
+}
+
+.btn:hover .icon-span {
+    width: 100%; /* Take full width of the container */
+    justify-content: center; /* Center the icon */
+    font-size: 1.5rem; /* Make the icon bigger */
+    transform: scale(1.1);
+}

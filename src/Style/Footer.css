@@ -1,0 +1,63 @@
+.Footer{
+    height: fit-content;
+    display: grid;
+    grid-template-rows: 1.6fr 0.4fr;
+    margin-top: 2rem;
+}
+
+.footerlinks{
+    display: grid;
+    grid-template-columns: 0.2fr 1.8fr;
+    padding: 0 4rem 0 4rem;
+}
+
+.motive{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.motive h2{
+    color: cornflowerblue;
+    filter: drop-shadow(0 0 1rem cornflowerblue);
+    font-size : 2rem;
+    cursor: pointer;
+}
+
+.motive p{
+    padding: 1rem 0 0 0 ;
+}
+
+.copyright{
+    background-color: rgba(99, 115, 129, 0.2);
+    text-align: center;
+}
+
+.contentcontainer{
+    display: grid;
+    grid-template-rows: 1.6fr 0.4fr;
+}
+.linkcontainer{
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.sociallinks{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.socialcontainer{
+    width: 4rem;
+    height: 4rem;
+}
+
+.socialcontainer{
+    display: flex;
+    font-size: 2rem;
+    justify-content: center;
+    align-items: center;
+}

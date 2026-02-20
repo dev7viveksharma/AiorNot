@@ -1,0 +1,66 @@
+.introduction-video-container{
+    width: 100%;
+    height: auto;
+    display: grid;
+    padding: 2rem 0 ;
+}
+
+.video-heading{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.video-heading h2{
+    font-size: 2.5rem;
+    font-style: normal;
+    line-height: 120%;
+    text-align: center;
+    font-family: Poppins-Bold, sans-serif;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(66%, #321c5a), to(#8e82a4));
+    background: -webkit-linear-gradient(top, #321c5a 66%, #8e82a4);
+    background: -moz-linear-gradient(top,#321c5a 66%,#8e82a4 100%);
+    background: linear-gradient(180deg, #321c5a 66%, #8e82a4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.video-heading p{
+    margin: 0;
+    color: #262854;
+    text-align: center;
+    font-size: 1.125rem;
+    font-style: normal;
+    line-height: 170%;
+    font-family: Poppins-Regular;
+}
+
+.homepage-video-container{
+    width: 100%;
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.video-controller-container{
+    width: 60%;
+    height: 80%;
+    filter: drop-shadow( 0 0 0.8rem black);
+}
+
+.video-controller-container video{
+    width: 100%;
+    height: 100%;
+    border-radius: 0.8rem;
+    object-fit: fill;
+    object-position: center;
+}
+

@@ -1,0 +1,18 @@
+.divider-container {
+  display: flex; /* Aligns the items (lines and text) in a row */
+  align-items: center; /* Vertically centers the "OR" text within the lines */
+  text-align: center; /* Centers the text within its own space */
+  margin: 1rem 0 0.5rem 0 /* Adds vertical spacing above and below the divider */
+}
+
+.divider-line {
+  flex: 1; /* Allows the lines to grow and take up equal available space */
+  border-bottom: 1px solid #ccc; /* Creates the horizontal line */
+  /* You can match the color from the image using #e7e9ed or similar light gray */
+}
+
+.divider-text {
+  padding: 0 10px; /* Adds space around the "OR" text so it doesn't touch the lines */
+  color: #aaa; /* Styles the text color */
+  font-weight: 500; /* Makes the text slightly bolder */
+}
