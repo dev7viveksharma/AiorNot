@@ -4,7 +4,7 @@ import {db} from "../database/sql.db.js";
 // Runs every day at 00:00 (midnight)
 cron.schedule("0 0 * * *", async () => {
   try {
-    const sql = `
+    const guestsql = `
       UPDATE guests
       SET 
         text_count = 3,
@@ -13,8 +13,17 @@ cron.schedule("0 0 * * *", async () => {
         last_reset = CURDATE()
     `;
 
-    await db.query(sql);
-    console.log("✅ Guest usage reset successfully");
+    const usersql = `
+    UPDATE usercredits SET
+    text_count = 10,
+    image_count = 5,
+    video_count = 2,
+    last_reset = CURDATE()
+    `;
+
+  await db.query(guestsql);
+  await db.query(usersql);
+    console.log("✅ Guest & user usage reset successfully");
   } catch (error) {
     console.error("❌ Cron reset failed:", error);
   }

@@ -1,0 +1,51 @@
+.contact-card{
+    width: 90%;
+    height: 90%;
+}
+
+.feedback-card-form{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 0.6fr 0.6fr 1.4fr 0.4fr ;
+}
+
+.username-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;       
+}
+
+.firstname-section , .lastname-section{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 1rem;
+}
+
+.contact-email-section{
+    display: grid;
+    grid-template-rows: 1fr 1fr ;
+    padding: 1rem;
+}
+
+.user-feedback-message{
+    margin: 1rem ;
+}
+
+.feedback-submit-section{
+    display: grid;
+    position: relative;
+    grid-template-rows: 1fr 1fr;
+    padding:  0 1rem;
+}
+
+.contact-email-submitbtn{
+    width: 8rem;
+    height: 3rem;
+    border-radius: 0.8rem;
+    text-align: center;
+    color: #fff;
+    background-color: cornflowerblue;
+    margin: auto;
+}
+
+

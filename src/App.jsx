@@ -4,41 +4,40 @@ import {useAuth} from './AuthProvider.jsx';
 import Applayout from "./layout/Applayout";
 import Errorpage from "./layout/Errorpage";
 import Home from "./pages/Home";
-import Image from "./pages/image";
+import Image from "./pages/Image.jsx";
 import Ai from "./pages/Ai";
 import Text from "./pages/Text";
 import Video from "./pages/video";
+import Music from "./pages/Music.jsx";
 import Aboutus from "./pages/Aboutus";
 import Contactus from "./pages/Contactus";
 import Usercard from "./Components/Usercard";
-import Setting from "./Components/Setting.jsx";
 import PageLoading from "./Components/PageLoading.jsx";
+import MyFile from "./pages/MyFile.jsx";
+import Settingcard from "./Components/Settingcard.jsx";
+import ProtectedRoutes from "./ProtectedRoutes.jsx";
 import './App.css';
 
 function App() {
   const {islogin , isloading} = useAuth();
-   const [userauthcard , setuserauthcard] = useState(false);
-   const [issetting , setissetting] = useState(false);
-      const opencard = () =>{
-          if(userauthcard){
-              setuserauthcard(false);
-              return;
-          }
   
-          setuserauthcard(true);
-      }
-      
-      const opensetting = ()=>{
-        setissetting(!issetting);
-      }
+  const [userauthcard , setuserauthcard] = useState(null);
 
+  const opencard = (option) =>{
+    setuserauthcard(option);
+  }   
+
+  const cardcomponents = {
+    login : <Usercard card = {opencard}/>,
+    settingmenu : <Settingcard opencard ={opencard}/>
+  }
   const router = createBrowserRouter([
     {
       path : '/',
-      element : <Applayout opencard = {opencard} opensettings={opensetting} user={islogin}/>,
+      element : <Applayout opencard = {opencard}  user={islogin} opensettingmenu = {opencard}/>,
       errorElement : <Errorpage/>,
       children : [
-        {
+                {
           path : '',
           element : <Home />
         },
@@ -55,6 +54,10 @@ function App() {
           element : <Video/>
         },
                 {
+          path : 'music',
+          element : <Music/>
+        },
+                {
           path : 'ai',
           element : <Ai/>
         },
@@ -62,9 +65,17 @@ function App() {
           path : 'aboutus',
           element : <Aboutus/>
         },
-                  {
+                {
           path : 'contactus',
-          element : <Contactus/>
+          element :<ProtectedRoutes> 
+                    <Contactus/>
+                   </ProtectedRoutes>
+        },
+        {
+          path : 'myfiles',
+          element :<ProtectedRoutes>
+                    <MyFile/>
+                   </ProtectedRoutes>
         },
       ]
 
@@ -77,19 +88,9 @@ function App() {
       )
     }
     {
-     userauthcard &&(
-                <Usercard card = {opencard}/>
-            )
+     userauthcard && cardcomponents[userauthcard]
     }
-    {
-      issetting &&(
-        <Setting/>
-      )
-    }
-    {
-
-    }
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
     </>
   )
 }

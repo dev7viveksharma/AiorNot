@@ -1,0 +1,56 @@
+.settingbtn{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 80%;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    
+}
+
+.settingsicon{
+    padding: 0 0.5rem 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.settingsname{
+    font-weight: 500;
+    color: #646cff;
+}
+
+.settingsicon , .settingsname{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+
+.filebtn{
+    width: calc(100% - 2rem);
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.8rem;
+    margin: 1rem 1rem;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.settingbtn:hover , .filebtn:hover{
+    background-color: #646cff;
+}
+
+.settingbtn:hover .settingsname , .filebtn:hover .settingsname{
+    color: #fff;
+}
+
+

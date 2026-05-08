@@ -1,0 +1,79 @@
+.general-component , .Account-component , .Upgradeplans-component , .Privacy-component , .Help-component{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.general-heading , .Account-heading , .Privacy-heading , .Upgradeplans-heading , .Help-heading{
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    align-items: center;     /* vertical center */
+    justify-content: center; /* 🔥 horizontal center */
+    padding-left: 1rem ;
+    border-bottom: 1px solid #0005;
+}
+
+.general-heading h2 , .Account-heading h2 , .Privacy-heading h2 , .Upgradeplans-heading h2 , .Help-heading h2{
+    width: 100%;
+    margin: 0;
+}
+
+.menusettings-options-container{
+    width: 100%;
+    min-height:4rem;
+    height: auto;
+    border-bottom: 0.5px solid #0005;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.menusettings-options-container .option-name , .menusettings-options-container .option-action-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 1rem ;
+}
+
+.menusettings-options-container .option-action-container{
+    padding-right: 1rem;
+    justify-content: right;
+}
+
+
+.option-action-container .toggle{
+    min-width: 4rem;
+    width: auto;
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle .toggledata{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
+
+.toggle .togglebtn{
+    width: 4rem;
+    height: 2rem;
+}
+
+.menu-actionarrow{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-actionarrow:hover{
+    background-color: #0005;
+}

@@ -1,4 +1,5 @@
 import {getGuestFromDB , getGuestFromIP , createGuest} from "../Services/Guest.service.js";
+import { generateToken } from "../Utility/TokenGeneration.util.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
@@ -41,7 +42,7 @@ try {
     // 3️⃣ First-time visitor → create guest
     const newGuest = await createGuest(req.ip , user_agent);
   
-    res.cookie("guest_id", newGuest.guest_id, {
+    res.cookie("guest_id", generateToken(newGuest.guest_id, "3h"),{
       httpOnly: true,
       sameSite: "lax"
     });

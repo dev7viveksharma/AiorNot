@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
 import Routelink from "../Components/Routelink";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { FaRegUser } from "react-icons/fa";
 import '../Style/Header.css';
-import { useState } from "react";
-export default function Header({opencard , opensettings , user}){
+import { useState , useRef} from "react";
+export default function Header({opencard , opensettings , user , ref}){
     return (
         <>
         <header className="header">
@@ -18,6 +17,7 @@ export default function Header({opencard , opensettings , user}){
                 <Routelink route={"/text"} name={"Text"}/>
                 <Routelink route={"/image"} name={"Image"}/>
                 <Routelink route={"/video"} name={"Video"}/>
+                <Routelink route={"/music"} name={"Music"}/>
                 <Routelink route={"/ai"} name={"Modern Ai"}/>
                 <Routelink route={"/aboutus"} name={"About Us"}/>
             </div>
@@ -27,7 +27,7 @@ export default function Header({opencard , opensettings , user}){
             </div>
             } */}
             <div className="user">
-                <button className={user ? "user-btn" : "unknown-user"} onClick={user ? opensettings : opencard}>{user ?<FaRegUser/> : "Sign Up"}</button>
+                <button className={user ? "user-btn" : "unknown-user"} ref={ref} onClick={user ? ()=> opensettings("settingmenu") : ()=>opencard("login")}>{ user ?<FaRegUser/> : "Sign Up"}</button>
             </div>
         </header>
         </>

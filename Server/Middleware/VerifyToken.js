@@ -3,15 +3,19 @@ import dotenv from "dotenv";
 
 dotenv.config();
 export const VerifyToken = (req , res , next)=>{
+try {
     const token = req.cookies.AiorNotToken;
-
     if(!token){
-        return res.status(401).json({success : false , message : "Unauthorized User"});
+        const guest = req.cookies.guest_id;
+        const guestdecode = jwt.verify(guest ,process.env.JWT_SECRET);
+        req.usertype = "guest";
+        req.userdata = guestdecode;
+        return next();
     }
 
-    try {
         const decoded = jwt.verify(token , process.env.JWT_SECRET);
-        req.user = decoded;
+        req.usertype = "user";
+        req.userdata = decoded;
         next();
         
     } catch (error) {

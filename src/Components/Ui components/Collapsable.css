@@ -1,0 +1,73 @@
+
+/* collapsable menu css */
+
+.moredetails-menu{
+  width: 100%;
+  min-height: 2rem;
+  height: 100%;
+  max-height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 0.75rem #7168f8);
+}
+
+.collapsingbtn{
+    width: 10rem;
+    height: 2rem;
+    border-radius: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.collapsingbtn p{
+    margin: 0;
+}
+.details-droparrow{
+   font-size: 2rem;
+}
+
+.information-container{
+  display: none;  
+  width: 60rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background: #fff;
+}
+
+
+/* image  */
+
+.outcomebox{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.focus-region-container{
+    display: flex;
+    align-items: center;
+}
+
+.focus-region-container p{
+    margin: 0 1rem;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.key-indicator-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.pointers{
+    display: flex;
+    align-items: center;
+}

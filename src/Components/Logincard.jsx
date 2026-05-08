@@ -4,7 +4,9 @@ import Login from "./Login";
 import Signup from "./Signup";
 import "../Style/Logincard.css";
 import { useState } from "react";
+import { useAuth } from "../AuthProvider";
 export default function Logincard({card}){
+    const {setislogin} = useAuth();
     const [userdata , setuserdata] = useState({
         username : "",
         useremail : "",
@@ -73,9 +75,10 @@ export default function Logincard({card}){
             if(response.data.success){
                 console.log("logged in");
                 card();
+                setislogin(response.data.islogin);
             }
         } catch (error) {
-            if (error.response) {
+            if (error.response){
                 console.log("Error:", error.response.data.message); // server responded with error
                 setserverError(error.response.data.message);
 

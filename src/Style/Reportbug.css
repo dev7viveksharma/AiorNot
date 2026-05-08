@@ -1,0 +1,97 @@
+.reportbug-card{
+    width: 90%;
+    height: 95%;
+}
+
+.reportbug-form{
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0.8fr 0.6fr 0.8fr 0.4fr 1.2fr 0.8fr;
+}
+.report-card-heading{
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    color: #DC4654;
+}
+
+.username-report-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+}
+
+.user-report-email-section{
+    display: grid;
+    padding: 1rem;
+}
+
+.report-description-section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.bug-type-section , .bug-level-section{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 1rem;
+}
+
+.bug-description-section{
+    display: grid;
+    grid-template-rows: 0.4fr 1.6fr;
+    padding: 0 1rem;
+}
+
+.bugreport-textarea{
+    resize: none;
+    padding: 1rem;
+    height: 5rem;
+    border-radius: 0.8rem;
+    border: 1px solid black;
+}
+
+
+.bug-file-section{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 0.6fr 1.4fr;
+    padding: 0 1rem;
+    align-items: center;
+    gap: 6px;
+}
+
+.bug-file-input{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.report-submit-section{
+    width: 100%;
+    display: grid;
+    padding: 0 1rem;
+}
+
+.report-submit-section p{
+    margin: 0;
+}
+
+.report-submitbtn{
+    width: 8rem;
+    height: 3rem;
+    border-radius: 0.8rem;
+    text-align: center;
+    color: #fff;
+    background-color:#DC4654;
+    margin: auto;
+}
+
+
+.report-input:hover , .bugreport-textarea:hover, .bug-file-input:hover ,.report-submitbtn:hover{
+    border-color: #DC4654;
+    transition: border-color 0.1s ease-in;
+}

@@ -1,10 +1,10 @@
 import { GaugeComponent } from 'react-gauge-component';
 import '../Style/Meter.css';
-export default function Meter(){
+export default function Meter({percentage}){
     return(
          <div className="meter">
                 <GaugeComponent
-            value={50}
+            value={percentage}
             type="radial"
             labels={{
                 tickLabels: {

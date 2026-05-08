@@ -1,0 +1,60 @@
+.Appearance-toggle-switch {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  --light: #d8dbe0;
+  --dark: #28292c;
+}
+
+.switch-label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark);
+  border-radius: 999px;
+  cursor: pointer;
+  border: 2px solid var(--dark);
+  box-sizing: border-box;
+}
+
+.checkbox {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  transition: 0.3s;
+}
+
+.checkbox:checked ~ .slider {
+  background-color: var(--light);
+}
+
+/* 🌙☀️ Thumb with moon effect */
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 40%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: var(--dark);
+
+  /* 🔥 Responsive moon effect */
+  box-shadow: inset 0.5em -0.15em 0 0 var(--light);
+
+  transition: 0.3s;
+}
+
+/* ☀️ Sun mode */
+.checkbox:checked ~ .slider::before {
+  transform: translateX(125%);
+  background-color: var(--dark);
+
+  /* remove moon shadow → sun */
+  box-shadow: none;
+}

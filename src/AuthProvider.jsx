@@ -23,7 +23,7 @@ export default function AuthProvider({children}){
     verifyuser();
   },[])
     return(
-    <AuthContext.Provider value={{islogin , setislogin , isloading}}>
+    <AuthContext.Provider value={{islogin , setislogin , isloading , setisloading}}>
       {children}
     </AuthContext.Provider>
     );
