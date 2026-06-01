@@ -1,33 +1,60 @@
+import { useReducer, useRef, useState } from "react";
+import { useAuth } from "../AuthProvider";
+import { useOutletContext } from "react-router-dom";
 import Meter from "../Components/Meter";
 import Videoplayer from "../Components/Videoplayer";
 import Panelbutton from "../Components/Panelbutton";
 import FirstInput from "../Components/FirstInput";
+import Popmessage from "../Components/Ui components/Popmessage";
 import { TbAnalyze } from "react-icons/tb";
 import { MdOutlineChangeCircle } from "react-icons/md";
+import axios from "axios";
 import '../Style/Video.css';
-import { useRef, useState } from "react";
+
 export default function Video(){
+    const {setisloading} = useAuth();
+    const {popup , setpopup} = useOutletContext();
     const videolink = useRef(null);
     const videoselector = useRef(null);
+    const [videourl , setvideourl] = useState(null);
     const [videoanalyzer , setvideoanalyzer] = useState(false);
-    const [video , setvideo ] = useState(null);
+   
 
     const handlevideoselect = (event) =>{
         const link = event.target.files[0];
         if(!link) return;
         const url = URL.createObjectURL(link);
         videoselector.current.style.display = "none";
-        setvideo(url);
+        setvideourl(url);
         setvideoanalyzer(true);
 
     }
 
-    const handlesubmitvideo = () =>{
-        console.log("video submit");
+    const handlesubmitvideo = async() =>{
+       try {
+        setisloading(true);
+        if(!videolink.current.files[0]) return;
+        console.log(videolink.current.files[0]);
+        const formdata = new FormData();
+        formdata.append("file" , videolink.current.files[0])
+        const url = "api/video";
+        const response = await axios.post(url , formdata , {withCredentials : true , 
+        params:{
+            type : "video_count"
+        }});
+
+        if(response.data.success){
+            URL.revokeObjectURL(videourl);
+        }
+       } catch (error) {
+            console.log(error);
+       }finally{
+            setisloading(false);
+       }
     }
 
     const handlechangevideo = () =>{
-        if(!video) return;
+        if(!videolink.current) return;
         videolink.current.click();
     }
 
@@ -39,14 +66,26 @@ export default function Video(){
                 <h2>Instantly analyse any video and get accurate AIorNot insights in seconds</h2>
             </div>
             <div className="video-container">
+                
                 <div className="video-selector" ref={videoselector}>
-                    <FirstInput ref={videolink} action={handlevideoselect} Filetype={"video/*"}/>
+                    <div className="webvideoplayer-container">
+                        <div className="webvideo-overlay">
+                            <Videoplayer controls={false} video={"/video/AI Video Detected Instantly.mp4"} autoplay={true} muted={true}/>
+                        </div>
+                    </div>
+                    <div className="video-input-container">
+                        <div className="video-input-heading-tag">
+                            <h4>Ai Video Detection</h4>
+                            <h4>DeepFake Detection</h4>
+                        </div>
+                        <FirstInput ref={videolink} action={handlevideoselect} Filetype={"video/*"}/>
+                    </div>
                 </div>
                 {videoanalyzer &&(
                     <div className="video-controlpanel">
                     <div className="video-player-container">
                         <div className="video-preview">
-                            <Videoplayer video={video} autoplay={false} muted={false}/>
+                            <Videoplayer controls={true} video={videourl} autoplay={false} muted={false}/>
                         </div>
                         <div className="video-controls">
                             <Panelbutton name={"Analyse"} icon={<TbAnalyze/>}  action={handlesubmitvideo}/>

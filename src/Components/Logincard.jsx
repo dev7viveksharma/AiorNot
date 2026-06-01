@@ -63,7 +63,6 @@ export default function Logincard({card}){
 
     const authUser = async(event)=>{
         event.preventDefault();
-        console.log(loginuserdata.userEmail , loginuserdata.userPassword , loginuserdata.rememberMe);
         try {
             const url = '/auth/login';
             const response = await axios.post(url,{

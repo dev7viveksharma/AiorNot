@@ -1,0 +1,111 @@
+.waves-container{
+    display:flex;
+    justify-content:center;
+    align-items:end;
+
+    width:100%;
+    height:100%;
+
+    padding:0 0 1rem 0;
+}
+
+.wave{
+    display:flex;
+    align-items:end;
+    justify-content:space-evenly;
+
+    gap:0.35rem;
+
+    width:100%;
+    height:6rem;
+}
+
+.wave span{
+
+    width:0.45rem;
+
+    height:1rem;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        to top,
+        #3d45d0,
+        #6c72ff
+    );
+
+    box-shadow:0 0 12px #4f58ff;
+
+    animation:wave 1.2s ease-in-out infinite;
+
+    animation-play-state:paused;
+
+    transform-origin:bottom;
+
+    will-change:height;
+}
+
+.wave.active span{
+    animation-play-state:running;
+}
+
+.wave span:nth-child(1){ animation-delay:0s; }
+.wave span:nth-child(2){ animation-delay:0.05s; }
+.wave span:nth-child(3){ animation-delay:0.1s; }
+.wave span:nth-child(4){ animation-delay:0.15s; }
+.wave span:nth-child(5){ animation-delay:0.2s; }
+.wave span:nth-child(6){ animation-delay:0.25s; }
+.wave span:nth-child(7){ animation-delay:0.3s; }
+.wave span:nth-child(8){ animation-delay:0.35s; }
+.wave span:nth-child(9){ animation-delay:0.4s; }
+.wave span:nth-child(10){ animation-delay:0.45s; }
+
+.wave span:nth-child(11){ animation-delay:0.5s; }
+.wave span:nth-child(12){ animation-delay:0.55s; }
+.wave span:nth-child(13){ animation-delay:0.6s; }
+.wave span:nth-child(14){ animation-delay:0.65s; }
+.wave span:nth-child(15){ animation-delay:0.7s; }
+.wave span:nth-child(16){ animation-delay:0.75s; }
+.wave span:nth-child(17){ animation-delay:0.8s; }
+.wave span:nth-child(18){ animation-delay:0.85s; }
+.wave span:nth-child(19){ animation-delay:0.9s; }
+.wave span:nth-child(20){ animation-delay:0.95s; }
+
+.wave span:nth-child(21){ animation-delay:1s; }
+.wave span:nth-child(22){ animation-delay:1.05s; }
+.wave span:nth-child(23){ animation-delay:1.1s; }
+.wave span:nth-child(24){ animation-delay:1.15s; }
+.wave span:nth-child(25){ animation-delay:1.2s; }
+.wave span:nth-child(26){ animation-delay:1.25s; }
+.wave span:nth-child(27){ animation-delay:1.3s; }
+.wave span:nth-child(28){ animation-delay:1.35s; }
+.wave span:nth-child(29){ animation-delay:1.4s; }
+.wave span:nth-child(30){ animation-delay:1.45s; }
+
+
+@keyframes wave{
+
+    0%{
+        height:15%;
+    }
+
+    20%{
+        height:80%;
+    }
+
+    40%{
+        height:30%;
+    }
+
+    60%{
+        height:100%;
+    }
+
+    80%{
+        height:50%;
+    }
+
+    100%{
+        height:15%;
+    }
+}

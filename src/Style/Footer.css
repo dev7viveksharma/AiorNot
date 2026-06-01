@@ -29,8 +29,10 @@
 }
 
 .copyright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: rgba(99, 115, 129, 0.2);
-    text-align: center;
 }
 
 .contentcontainer{

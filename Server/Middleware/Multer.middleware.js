@@ -1,16 +1,23 @@
 import multer from "multer";
 import AppError from "../Utility/AppError.util.js";
-const upload = multer({
+const Image = multer({
     storage: multer.memoryStorage(),
     limits: {
         fileSize: 10 * 1024 * 1024
     }
 });
 
+const Video = multer({
+    storage : multer.memoryStorage(),
+    limits : {
+        fileSize : 50 * 1024 * 1024
+    }
+})
+
 export const uploadImage = (req, res) => {
     console.log("entered in multer");
     return new Promise((resolve, reject) => {
-        upload.single("file")(req, res, (err) => {
+        Image.single("file")(req, res, (err) => {
             if (err) {
                 console.log("MULTER ERROR:", err.message); 
                 return reject(err);
@@ -24,3 +31,20 @@ export const uploadImage = (req, res) => {
         });
     });
 };
+
+export const uploadVideo = (req ,res) =>{
+     console.log("entered in multer");
+    return new Promise((resolve, reject) => {
+        Video.single("file")(req, res, (err) => {
+            if (err) {
+                console.log("MULTER ERROR:", err.message); 
+                return reject(err);
+            }
+            console.log("in middle of memoryStorage");
+            if (!req.file) {
+                return reject(new AppError("No file uploaded", 400));
+            }
+            resolve(req.file); // return full file object
+        });
+    });
+}

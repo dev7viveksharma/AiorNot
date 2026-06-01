@@ -16,6 +16,7 @@ import PageLoading from "./Components/PageLoading.jsx";
 import MyFile from "./pages/MyFile.jsx";
 import Settingcard from "./Components/Settingcard.jsx";
 import ProtectedRoutes from "./ProtectedRoutes.jsx";
+import ForgetPassword from "./pages/ForgetPassword.jsx";
 import './App.css';
 
 function App() {
@@ -79,6 +80,10 @@ function App() {
         },
       ]
 
+  },{
+    path : "ForgetPassword",
+    element : <ForgetPassword/>,
+    errorElement : <Errorpage/>,
   }])
   return (
     <>

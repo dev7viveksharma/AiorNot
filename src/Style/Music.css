@@ -10,7 +10,7 @@
     height: 3rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin: 1rem 0;
 }
 
 .music-heading h3{
@@ -53,4 +53,66 @@
     height: 90%;
     background: #ddd;
     border-radius: 1.2rem;
+}
+
+.after-music-insert{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 0.5fr 0.5fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-result-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1.2fr 0.8fr;
+}
+
+
+.music-player-container{
+    filter: drop-shadow(0 0 0.5rem #7168f8);
+}
+
+.feature-btn-container{
+    margin: 1rem 0;
+}
+
+.music-result{
+    display: grid;
+    grid-template-columns: 0.8fr 0.8fr 1.4fr ;
+}
+
+.ai-music-meter , .human-music-meter{
+    text-align: center;
+}
+
+.ai-music-meter p , .human-music-meter p{
+    margin: 0;
+}
+
+.music-result-stats{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-block{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.stats-block p{
+    font-size: 2rem;
+    margin: 0;
+}
+
+.stats-block p , .stats-block h3{
+    text-align: center;
 }

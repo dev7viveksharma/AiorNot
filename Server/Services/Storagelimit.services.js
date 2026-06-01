@@ -1,7 +1,6 @@
-import imagemodel from "../Models/Image.model.js";
 import {User} from "../Models/UserAccount.model.js"
 
-export const storageused = async (id) =>{
+export const storageused = async (id , model) =>{
         try {
             console.log("entered storageused" , id);
             const data = await User.findOne({userId : id});
@@ -13,7 +12,7 @@ export const storageused = async (id) =>{
                 throw error;
             }
 
-            const usage = await imagemodel.findOneAndUpdate({userId : data.AccountId},
+            const usage = await model.findOneAndUpdate({userId : data.AccountId},
                                                        {$setOnInsert : {storageUsed : 0 , media : [] }},  
                                                        {new : true , upsert : true ,     
                                                         projection: {

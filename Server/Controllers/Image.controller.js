@@ -1,12 +1,12 @@
 import { db } from "../database/sql.db.js";
+import imagemodel from "../Models/Image.model.js";
 import { handleuser , handlecredits } from "../Services/Auth.user.services.js";
 import {uploadImage} from "../Middleware/Multer.middleware.js";
 import {storageused} from "../Services/Storagelimit.services.js";
 import { uploadToCloudinary , destroy } from "../Services/Cloudinary.services.js";
 import fetchimagedata from "../Utility/ImageResponse.util.js"
-import fetchimagemetadata from "../Services/ImageMetadata.services.js";
+import fetchimagemetadata from "../Services/ImageResponseReshaping.services.js";
 import {Plans} from "../Models/UserAccount.model.js";
-import imagemodel from "../Models/Image.model.js";
 import AppError from "../Utility/AppError.util.js";
 import axios from "axios";
 import dotenv from "dotenv";
@@ -54,7 +54,7 @@ export const imagecontroller = async(req , res) =>{
           console.log("before check usertype");
           if(usertype === "user"){
             console.log("after check usertype user");
-            const usage = await storageused(userdata.id);
+            const usage = await storageused(userdata.id , imagemodel);
             console.log(usage);
             const plansdata = await Plans.findOne();
             console.log("plansdata" , plansdata);

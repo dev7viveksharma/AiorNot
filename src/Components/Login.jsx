@@ -62,7 +62,7 @@ export default function Login({userdata , setuserdata , authUser, useremailauthe
                                 <input type="checkbox" id="remember" checked ={userdata.rememberMe} onChange={handlelogincheckbox}/>
                                 <label htmlFor="remember">Remember me</label>
                             </div>
-                            <a href="">Forgot Password?</a>
+                            <a href="/ForgetPassword">Forget Password?</a>
                             </div>
                             <button className="loginbtn" disabled={disablebtn}>Login</button>
                             <p className="serverError">{serverError}</p>
