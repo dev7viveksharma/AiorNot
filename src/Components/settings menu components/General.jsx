@@ -19,6 +19,18 @@ export default function General(){
                         </div>
                     </div>
                 </div>
+                <div className="menusettings-options-container">
+                    <div className="option-name">
+                        <p>Notification</p>
+                    </div>
+                    <div className="option-action-container">
+                        <div className="toggle">
+                            <div className="togglebtn">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

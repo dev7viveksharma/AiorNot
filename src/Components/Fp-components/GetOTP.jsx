@@ -5,7 +5,7 @@ import "../../Style/ForgetPassword.css";
 import { useRef, useState } from "react";
 import axios from "axios";
 
-export default function GetOTP({errorfunction ,setpage, email , setisloading}){
+export default function GetOTP({errorfunction ,setpage , page , email , setisloading , sethistory , goback}){
     const [timeout , settimeout] = useState(false);
     const [otp , setotp] = useState(["","","",""]);
     const [Time, setTime] = useState(300);
@@ -32,7 +32,8 @@ export default function GetOTP({errorfunction ,setpage, email , setisloading}){
                     email : email
                 });
                 if(response.data.success){
-                    setpage("newpassword");
+                    sethistory(prev =>{return [...prev , page]});
+                    setpage("newpassword")
                 }
             } catch (error) {
                 const errorMessage = error.response?.data?.message || error.message;
@@ -63,6 +64,7 @@ export default function GetOTP({errorfunction ,setpage, email , setisloading}){
             setisloading(false);
         }
     }
+
     return(
         <>
         <div className="fp-otp-container">
@@ -95,7 +97,7 @@ export default function GetOTP({errorfunction ,setpage, email , setisloading}){
                         }
                         <Timer handletime={handletime} time={Time} setTime={setTime}/>
                     </p>
-                    <button><span><IoIosArrowRoundBack/></span>back</button>
+                    <button onClick={goback}><span><IoIosArrowRoundBack/></span>back</button>
                 </div>
             </div>
         </div>

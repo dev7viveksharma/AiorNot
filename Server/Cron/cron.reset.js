@@ -8,16 +8,16 @@ cron.schedule("0 0 * * *", async () => {
       UPDATE guests
       SET 
         text_count = 3,
-        image_count = 2,
-        video_count = 1,
+        image_count = 1,
+        video_count = 0,
         last_reset = CURDATE()
     `;
 
     const usersql = `
     UPDATE usercredits SET
     text_count = 10,
-    image_count = 5,
-    video_count = 2,
+    image_count = 3,
+    video_count = 1,
     last_reset = CURDATE()
     `;
 

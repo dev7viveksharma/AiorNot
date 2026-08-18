@@ -1,13 +1,20 @@
 import { useRef , useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import Warning from "../Components/Warning";
 import Meter from "../Components/Meter";
+import Limit from "../Components/Limit";
+import Popmessage from "../Components/Ui components/Popmessage";
+import PageLoading from "../Components/PageLoading";
+import { BiErrorAlt } from "react-icons/bi";
+import { HiBadgeCheck } from "react-icons/hi";
 import "../Style/Text.css";
-import { useAuth } from "../AuthProvider";
 export default function Text(){
-    const {isloading , setisloading} = useAuth();
+    const {popup , setpopup } = useOutletContext();
     const textinput = useRef(null);
+    const [isloading , setisloading] = useState(false);
     const [insertedtext, setinsertedtext] = useState(false);
+    const [credits , setcredits] = useState(0); 
     const [submittext , setsubmittext] = useState('');
     const [textresult , settextresult] = useState({
         aiWords : null ,
@@ -18,48 +25,86 @@ export default function Text(){
         status : false,
         textWords : null
     });
-    const [texterror , settexterror] = useState(null);
     const [text , settext] = useState("");
+
     const handletextsubmit = async () =>{
         const value = textinput.current.value;
-        if(value.length >= 400){
-            try {
-                setisloading(true);
-                settexterror(null);
-                const url = 'api/text';
-                const response = await axios.post(url , {text : value , type : "text_count"},
-                    {
-                        withCredentials : true
-                    }
-                );
+        if(value.length <= 400){
+            setpopup(prev => ({
+                ...prev,
+                show: true,
+                message : " Input is Too Small" ,
+                icon : <BiErrorAlt/>,
+                type : "error"
+            }));
+            return ;
+        }
+        try {
+            setisloading(true);
+            const url = 'api/text';
+            const response = await axios.post(url , {text : value , type : "text_count"},
+                {
+                    withCredentials : true
+                }
+            );
 
-                if(response.data.success){
-                    setsubmittext(value);
-                    settextresult(textinput =>({
-                        ...textinput , ...response.data.text
+            if(response.data.success){
+                setsubmittext(value);
+                settextresult(textinput =>({
+                    ...textinput , ...response.data.text
+                }));
+                setinsertedtext(true);
+                setcredits(response.data.newcredits);
+                textinput.current.value= "";
+
+                setpopup(prev => ({
+                    ...prev,
+                    show: true,
+                    message : "Video Processed Successfully",
+                    icon : <HiBadgeCheck/>,
+                    type : "success"
                     }));
-                    setinsertedtext(true);
-
-                    textinput.current.value= "";
-                }
-                } catch (err) {
-                        if (err.response) {
-                        // backend sent error
-                        settexterror(err.response.data.message || "Server error");
-                    } else if (err.request) {
-                        // no response
-                        settexterror("No response from server");
-                    } else {
-                        // other error
-                        settexterror("Error: " + err.message);
-                    }
-                }finally{
-                    setisloading(false);
-                }
+            }
+            } catch (err) {
+            if (err.response) {
+                // backend sent error
+                    setpopup(prev => ({
+                    ...prev,
+                    show: true,
+                    message : err.response.data.message || "Server error" ,
+                    icon : <BiErrorAlt/>,
+                    type : "error"
+                }));
+            } else if (err.request) {
+                // no response
+                    setpopup(prev => ({
+                    ...prev,
+                    show: true,
+                    message : " No Response from Server" ,
+                    icon : <BiErrorAlt/>,
+                    type : "error"
+                }));                    
+            } else {
+                // other error
+                    setpopup(prev => ({
+                    ...prev,
+                    show: true,
+                    message : err.message || "Server error" ,
+                    icon : <BiErrorAlt/>,
+                    type : "error"
+                }));                    }
+        }finally{
+            setisloading(false);
         }
     }
     return(
         <>
+        {popup.show &&
+                <Popmessage message={popup.message} icon={popup.icon} onclose={() =>setpopup(prev => ({ ...prev, show: false }))} type={popup.type}/>
+        }
+        {isloading &&
+         <PageLoading/>
+        }
         <section className="text">
             <div className="text-main-container">
                 <div className="text-detector-container">
@@ -126,13 +171,14 @@ export default function Text(){
                 </div>
                 <div className="text-error-container">
                     <p className="texterror">
-                        {
-                            texterror
-                        }
+                        {}
                     </p>
                 </div>
             </div>
         </section>
+        { insertedtext &&
+            <Limit value={credits}/>
+        }
         </>
     )
 }

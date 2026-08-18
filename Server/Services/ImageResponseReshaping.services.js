@@ -45,9 +45,9 @@ export default  function fetchimagemetadata(imageresult){
     return {
             is_ai : imageresult.type.ai_generated > 0.5,
             prediction : imageresult.type.ai_generated > 0.5 ? "Fake" : "Real",
-            ai_probability : imageresult.type.ai_generated,
-            real_probability : 1.0 - imageresult.type.ai_generated,
-            certainty_level: certainty_level(),
+            ai_probability : imageresult.type.ai_generated * 100,
+            real_probability : 100 - (imageresult.type.ai_generated * 100),
+            certainity_level: certainty_level(),
             type : buildType(),
             reasoning_summary : summary(),
             createdAt: new Date()

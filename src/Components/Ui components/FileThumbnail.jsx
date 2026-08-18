@@ -1,7 +1,10 @@
 import { useRef, useState } from "react";
+import Routelink from "../Routelink";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import "./FileThumbnail.css";
-export default function FileThumbnail({title , image}){
+import axios from "axios";
+
+export default function FileThumbnail({title , image , mediaid , userid , mediatype}){
     const [isopen  , setisopen] = useState(false);
     return (
         <>
@@ -15,7 +18,7 @@ export default function FileThumbnail({title , image}){
             <div className="file-Thumbnail">
                 <img className="img-thumbnail" src={image} alt="" />
                 <div className="cover-view-overlay">
-                    <p>View</p>
+                    <Routelink route={`/media/${mediatype}/${userid}/${mediaid}`} name={"View"}/>
                 </div>
             <div className={`file-menu ${isopen?"show" : ""}`}>
                     <p>Edit</p>

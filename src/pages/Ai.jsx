@@ -24,7 +24,7 @@ export default function Ai(){
                     ModerAI is considered a valuable tool for maintaining digital safety and improving the user experience across modern online platforms. <br />
                 </p>
             </div>
-            <img src="/image/people-wearing-futuristic-high-tech-virtual-reality-glasses.jpg" alt="Ai image" />
+            <img src="/image/people-wearing-futuristic-high-tech-virtual-reality-glasses.jpg" alt="Ai image" loading='lazy'/>
         </section>
          <div className="Aiarticle">
                 {

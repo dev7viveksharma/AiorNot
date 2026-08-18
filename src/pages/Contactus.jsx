@@ -3,15 +3,18 @@ import Settingbtn from "../Components/Settingbtn";
 import Contactperson from "../Components/Contactperson";
 import Emailus from "../Components/Emailus";
 import Reportbug from "../Components/Reportbug";
-import { useState , useRef , useMemo } from "react";
+import { useState , useRef , useEffect } from "react";
+import axios from "axios";
 import { GoBug } from "react-icons/go";
 import { MdOutlineEmail } from "react-icons/md";
+import { useOutletContext } from "react-router-dom";
 export default function Contactus(){
-    const contactcomponents =  {
-        person : <Contactperson/>,
-        email : <Emailus/>,
-        reportbug : <Reportbug/>
-    }
+    const [info , setinfo] = useState({
+        firstname : "",
+        lastname : "",
+        email : "",
+    });
+    const {popup , setpopup} = useOutletContext();
     const [contactactive , setcontactactive ] = useState("person");
     const [bgColor , setbgcolor] = useState("cornflowerblue");
     const handlecontact = (action) =>{
@@ -20,6 +23,34 @@ export default function Contactus(){
 
     const changecolor = (color)=>{
         setbgcolor(color);
+    }
+
+
+    useEffect(()=>{
+        try {
+            const getinfo = async() =>{
+                const response = await axios.get("auth/Accountinfo",{withCredentials : true});
+                if(response.data.success){
+                    const name = response.data.name.split(" ");
+                    setinfo((data)=>({
+                        ...data ,  
+                        firstname : name[0],
+                        lastname : name[1],
+                        email : response.data.email,
+                        
+                    }));
+                }
+            }
+            getinfo();
+            } catch (error) {
+            console.log(error.message);
+         }
+    },[]);
+
+    const contactcomponents =  {
+        person : <Contactperson/>,
+        email : <Emailus info={info} context={popup , setpopup}/>,
+        reportbug : <Reportbug info={info} context={popup , setpopup}/>
     }
     return(
         <>

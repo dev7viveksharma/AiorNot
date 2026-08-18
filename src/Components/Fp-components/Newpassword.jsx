@@ -4,9 +4,10 @@ import "../../Style/ForgetPassword.css";
 import { CgPassword } from "react-icons/cg";
 import { useState } from "react";
 import { VscLaw } from "react-icons/vsc";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-export default function Newpassword({errorfunction ,  email , setisloading}){
+export default function Newpassword({errorfunction ,  email , page, setisloading , setpage , goback}){
 
     const navigate = useNavigate();
     const [password , setpassword] = useState({
@@ -139,6 +140,7 @@ useEffect(() => {
             </div>
             <div className="fp-password-confirm-btn-container">
                 <button className="fp-confirm-btn" disabled={isdisabled} onClick={handlePassowordSave}>Confirm</button>
+                <button className="backbtn" onClick={goback}><span><IoIosArrowRoundBack/></span>back</button>
             </div>
         </div>
         </>

@@ -4,7 +4,6 @@ import AppError from "./AppError.util.js";
 dotenv.config();
 
 const AIContentDetector = async(video) =>{
-    console.log("video : " , video)
     const base64content = `data:${video.mimetype};base64,${video.buffer.toString("base64")}`
     const API_KEY = process.env.VIDEO_API_KEY;
 
@@ -33,8 +32,6 @@ const AIContentDetector = async(video) =>{
     return data;
 }
 export const apiresponse = async (duration, usertype, video) => {
-
-    console.log("ENTRY IN VideoResponse");
 
     if (duration > 1 && duration <= 60 && usertype === "user") {
 

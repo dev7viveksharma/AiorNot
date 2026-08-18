@@ -20,7 +20,10 @@ const uservideo = new Schema({
 
       aiResult: {
         is_ai: Boolean,
-        prediction: String,      
+        prediction: String,
+        ai_probability: Number,
+        real_probability: Number,
+        certainty_level: String,      
         createdAt: Date
       },
     }

@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default async function fetchimagedata(file) {
-    console.log("entered");
-
     const data = new FormData();
 
     data.append("media", file.buffer, {
@@ -35,19 +33,7 @@ export default async function fetchimagedata(file) {
             }
         );
 
-        console.log("after axios");
-       return response.data;
-
-    // return  {
-    //         status: 'success',
-    //         request: {
-    //             id: 'req_kwFeFLxSgDjw63ytenb06',
-    //             timestamp: 1776756274.877533,
-    //             operations: 5
-    //         },
-    //         type: { ai_generated: 0.99 },
-    //         media: { id: 'med_kwFekfZdgWA8SqHMWl9SD', uri: 'image_3e5a327f (1).png' }
-    //         }
+    return response.data;
 
     } catch (error) {
         console.log(error.response?.data || error.message);

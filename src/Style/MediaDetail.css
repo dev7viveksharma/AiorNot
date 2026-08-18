@@ -1,0 +1,173 @@
+.mediadetail-container{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.media-details , .media-player-container{
+    box-shadow:  0 0 10px 0 rgb(0, 0, 0 , 0.5);
+    background: #fff;
+}
+
+.media-player-container{
+    height: 100%;
+    width: 100%;
+}
+
+.media-details {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    height: 100%; /* Ensure it binds to its parent container */
+}
+
+.propability-percentage-section {
+  display: grid;
+  /* Left column takes 60%, right column takes 40% */
+  grid-template-columns: calc(50%-0.2rem) calc(50% - 0.2rem); 
+  /* Creates two explicit rows for the left items */
+  grid-template-rows: 1fr 1fr; 
+  height: 100%; /* Example parent height; adjust as needed */
+  gap: 0.2rem;
+}
+
+/* Force the first two divs into the first column */
+.isAi-section {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.isHuman-section {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+/* Force the last div into the second column and span both rows */
+.media-ai-result-container {
+  display: grid;
+  grid-column: 2;
+  grid-row: span 2; /* Fills 100% of the parent height */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional styling for visualization */
+.propability-percentage-section > div {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.media-report{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 0.5px solid black ;
+    gap: 0.2rem;
+}
+
+.media-other-details-container{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+ .media-certainity-lvl-section , .media-prediction-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+
+.isAi-section h3 , .isHuman-section h3 , .media-ai-result-container h3{
+    width: 100%;
+    font-size: 2rem;
+    color: cornflowerblue;
+}
+.isAi-section p , .isHuman-section p , .media-ai-result-container p{
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.8rem;
+}
+.media-ai-result-container h3 {
+    font-size: 2.5rem;
+    text-align:left;
+}
+
+.media-ai-result-container p{
+    font-size: 2.5rem;
+    text-align: left;
+    padding: 0;
+}
+
+.media-certainity-lvl-section , .media-prediction-section{
+    width: 100%;
+    
+}
+
+.media-prediction-section h3 , .media-certainity-lvl-section h3{
+    width: 100%;
+    font-size: 1.5rem;
+    color: cornflowerblue;
+    text-align: left;
+}
+.media-prediction-section p , .media-certainity-lvl-section p{
+    width : 100%;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+    text-align: left;
+}
+
+.media-player{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-player .media-img , .media-player .videoplayer{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    aspect-ratio: 16 / 9;  /* or 4/3, 1/1, etc */
+    overflow: hidden;
+    object-fit:contain;
+}
+
+.media-description{
+    width: 100%;
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr;
+}
+
+.media-description-header{
+    width: 100%;
+    background: #181a1d;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-description-header h2{
+    margin: 0;
+    padding: 0;
+}
+
+.media-description .media-name , .media-description .media-type , .media-description .media-size{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content:justify;
+}
+
+.media-description .media-name p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

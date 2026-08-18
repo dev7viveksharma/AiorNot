@@ -1,0 +1,77 @@
+[
+    {
+        "id" : 1,
+        "question" : "What is AI or Not?",
+        "answer" : "AI or Not is a platform that helps users analyze content and estimate whether it was created by artificial intelligence or a human"
+    },
+        {
+        "id" : 2,
+        "question" : "How does AI detection work?",
+        "answer" : "Our system analyzes patterns, language structure, writing style, and other characteristics commonly found in AI-generated content to provide a prediction."
+    },
+        {
+        "id" : 3,
+        "question" : "Is the result always accurate?",
+        "answer" : "No. AI detection tools provide estimates, not guarantees. Results should be used as guidance rather than absolute proof."
+    },
+        {
+        "id" : 4,
+        "question" : "What types of content can I analyze?",
+        "answer" : "You can analyze text, image, video,  and music content supported by the platform."
+    },
+        {
+        "id" : 5,
+        "question" : "Do I need an account to use AI or Not?",
+        "answer" : "Basic features may be available without an account, while advanced features may require registration."
+    },
+        {
+        "id" : 6 ,
+        "question" : "Is my uploaded content stored?",
+        "answer" : "We take privacy seriously. Content is processed securely according to our privacy policy. Please review our policy for details about data storage and retention."
+    },
+       {
+        "id" : 7 ,
+        "question" : "Can AI-generated content be detected perfectly?",
+        "answer" : "No. As AI models become more advanced, detection becomes more challenging. No detector can guarantee 100% accuracy."
+    },
+       {
+        "id" : 8 ,
+        "question" : "Why was my human-written content flagged as AI-generated?",
+        "answer" : "Detection systems can occasionally produce false positives. Factors such as formal writing styles, repetitive patterns, or highly structured content may influence results."
+    },
+       {
+        "id" : 9 ,
+        "question" : "Why was AI-generated content marked as human-written?",
+        "answer" : "Advanced AI models can sometimes produce content that closely resembles human writing, which may reduce detection accuracy."
+    },
+       {
+        "id" : 10 ,
+        "question" : "Is AI or Not free to use?",
+        "answer" : "We offer free features and may provide premium plans with additional capabilities and higher usage limits."
+    },
+       {
+        "id" : 11 ,
+        "question" : "Who can benefit from AI or Not?",
+        "answer" : "Students, educators, recruiters, content creators, businesses, publishers, and researchers can all use AI or Not to evaluate content authenticity."
+    },
+       {
+        "id" : 12 ,
+        "question" : "How can I report a problem or provide feedback?",
+        "answer" : "You can contact our support team through the Contact Us page. We welcome bug reports, suggestions, and feature requests."
+    },
+       {
+        "id" : 13 ,
+        "question" : "What should I do if I disagree with a result?",
+        "answer" : "Review the content manually and consider the AI detection score as one factor among many. Important decisions should not rely solely on automated detection results."
+    },
+       {
+        "id" : 14 ,
+        "question" : "Does AI or Not support multiple languages?",
+        "answer" : "Language support depends on the current version of the platform. Check the supported languages section for the latest information."
+    },
+       {
+        "id" : 15 ,
+        "question" : "How often is the detection system updated?",
+        "answer" : "We regularly improve our detection models and algorithms to keep up with advances in AI-generated content."
+    }  
+]

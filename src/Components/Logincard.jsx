@@ -5,7 +5,9 @@ import Signup from "./Signup";
 import "../Style/Logincard.css";
 import { useState } from "react";
 import { useAuth } from "../AuthProvider";
+import { useQueryClient } from "@tanstack/react-query";
 export default function Logincard({card}){
+    const queryClient = useQueryClient();
     const {setislogin} = useAuth();
     const [userdata , setuserdata] = useState({
         username : "",
@@ -75,13 +77,14 @@ export default function Logincard({card}){
                 console.log("logged in");
                 card();
                 setislogin(response.data.islogin);
+                queryClient.invalidateQueries({
+                    queryKey : ["authentication"]
+                })
             }
         } catch (error) {
             if (error.response){
                 console.log("Error:", error.response.data.message); // server responded with error
                 setserverError(error.response.data.message);
-
-
             } else {
                 console.log("Error:", error.message); // other errors (network etc.)  
             }

@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Faq({answer , question}){
     const [isopen , setisopen] = useState(false);
     const handledropdown =  () =>{
-        setisopen(!isopen ? true : false);
+        setisopen(!isopen);
     }
     return(
         <>

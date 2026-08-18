@@ -17,6 +17,7 @@ export default function Settingcard({opencard}){
     }
 
     const [menuoption , setmenuoption] = useState("General");
+    
     const  handleclose =(event)=>{
             if( event.target === event.currentTarget){
                 opencard(null);

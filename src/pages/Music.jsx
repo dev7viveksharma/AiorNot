@@ -1,22 +1,57 @@
 import { useRef, useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import axios from "axios";
 import { TbAnalyze, TbContainer } from "react-icons/tb";
 import { MdOutlineChangeCircle } from "react-icons/md";
+import { HiBadgeCheck } from "react-icons/hi";
 import Panelbutton from "../Components/Panelbutton";
 import FirstInput from "../Components/FirstInput";
 import Musicplayer from "../Components/Ui components/Musicplayer";
 import Soundwaves from "../Components/Ui components/Soundwaves";
+import Popmessage from "../Components/Ui components/Popmessage";
 import Meter from "../Components/Meter";
 import "../Style/Music.css";
 export default function Music(){
+    const {popup , setpopup } = useOutletContext();
     const inputref = useRef(null);
     const [isfile , setisfile ] = useState(false);
     const [musicurl , setmusicurl] = useState(null);
+    const [musicfile , setmusicfile] = useState(null);
+    const [result , setresult] = useState(false);
     const[playing , setplaying] = useState(false);
+
+    const handlesubmitmusic = async()=>{
+        try {
+            const formdata = new FormData();
+            formdata.append("music",musicfile);
+            
+            const url = "api/music";
+
+            const response = await axios.post(url ,formdata,{withCredentials : true  ,
+            params:{
+                type : "music_count"
+            }});
+
+            if(response.data.success){
+                 setpopup(prev => ({
+                                    ...prev,
+                                    show: true,
+                                    message : response.data.message,
+                                    icon : <HiBadgeCheck/>,
+                                    type : "success"
+                                    }));
+            }
+        } catch (error) {
+            console.log("Music API error:", error);
+        }
+    }
+
+    const handlechangeMusic = ()=>{}
 
     const handleMusicselection = (event) =>{
          const files = event.target.files[0];
          if(!files)return;
-         
+         setmusicfile(files);
          const music = URL.createObjectURL(files);
          setmusicurl(music)
          setisfile(true);
@@ -24,6 +59,9 @@ export default function Music(){
     }
     return(
         <>
+        {popup.show &&
+            <Popmessage message={popup.message} icon={popup.icon} onclose={() =>setpopup(prev => ({ ...prev, show: false }))} type={popup.type}/>
+        }
         <section className="music-section">
             <div className="music-heading">
                 <h3>Instantly analyze any music and get accurate AI-generated insights in seconds</h3>
@@ -44,6 +82,7 @@ export default function Music(){
                 ):(
                 <>
                 <div className="music-result-container">
+                    { result &&
                     <div className="music-result">
                         <div className="ai-music-meter">
                             <Meter percentage={100}/>
@@ -64,14 +103,15 @@ export default function Music(){
                             </div>
                         </div>
                     </div>
+                    }
                     <Soundwaves playing={playing} />
                 </div>
                 <div className="music-player-container">
                     <Musicplayer playing={playing} setPlaying={setplaying} url={musicurl}/>
                 </div>
                 <div className="feature-btn-container">
-                      <Panelbutton name={"Analyse"} icon={<TbAnalyze/>} action={""}/>
-                      <Panelbutton name={"Change"} icon={<MdOutlineChangeCircle/>} action={""}/>                
+                      <Panelbutton name={"Analyse"} icon={<TbAnalyze/>} action={handlesubmitmusic}/>
+                      <Panelbutton name={"Change"} icon={<MdOutlineChangeCircle/>} action={handlechangeMusic}/>                
                 </div>
                 </>
                 )

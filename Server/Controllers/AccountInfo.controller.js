@@ -1,4 +1,5 @@
 import { db } from "../database/sql.db.js"; 
+import AppError from "../Utility/AppError.util.js";
 export const AccountInfo = async(req , res) =>{
     const {userdata , usertype} = req;
     try {
@@ -18,9 +19,14 @@ export const AccountInfo = async(req , res) =>{
                 });
         }
 
-        throw(new Error ("id or user not found during verification"));
+        throw new AppError("id or user not found during verification", 401);
         
     } catch (error) {
-        console.log(error.message);
+        const status = error.statusCode || 500;
+
+        return res.status(status).json({
+            success: false,
+            message: error.message
+        });
     }
 }

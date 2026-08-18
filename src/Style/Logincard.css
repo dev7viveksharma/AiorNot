@@ -142,6 +142,13 @@
     justify-content: space-between;
 }
 
+.otherFeatures .coverupcontainer{
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+    justify-content: center;
+}
+
 .loginform .logininput:hover,
 .loginform .logininput:focus ,
 .signupform .signupinput:hover,
@@ -152,6 +159,8 @@
 }
 
 .Oauth-section{
+    display: grid;
+    gap: 0.5rem;
     padding: 0.5rem 0;
 }
 

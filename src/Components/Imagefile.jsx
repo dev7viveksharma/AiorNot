@@ -3,8 +3,10 @@ import FileLoader from "../Components/Loaders/FileLoader";
 import FileThumbnail from "./Ui components/FileThumbnail";
 import "../Style/Imagefile.css";
 import { useEffect, useState } from "react";
+import { useAuth } from "../AuthProvider"
 import axios from "axios";
 export default function Imagefile(){
+    const {userinfo} = useAuth();
     const [fileloading , setfileloading] = useState(true);
     const [imagefiles , setimagefiles] = useState([]);
     const [usage , setusage]=useState({
@@ -28,19 +30,16 @@ export default function Imagefile(){
                         used : response.data.userused.size,
                         usedformat : response.data.userused.sizeformat
                     });
-
-                    console.log(usage);
                     setfileloading(false);
                 }
-                
             } catch (error) {
                 console.log(error);
             }finally{
+                console.log(userinfo);
                 setfileloading(false);
             }
         }
         getfile();
-        console.log(usage);
     },[]);
     return(
         <>
@@ -57,9 +56,8 @@ export default function Imagefile(){
                     ))
                     ):(
                         imagefiles.map((image , index)=>(
-                            <FileThumbnail title={image.url.split("/").pop()} image={image.url} key={index}/>
+                            <FileThumbnail title={image.url.split("/").pop()} image={image.url} key={index} mediaid={image._id} userid={userinfo.id} mediatype={image.mediaType}/>
                         ))
-                    
                     )
                 }
             </div>

@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
+    position: relative;
 }
 
 .general-heading , .Account-heading , .Privacy-heading , .Upgradeplans-heading , .Help-heading{
@@ -14,6 +15,9 @@
     justify-content: center; /* 🔥 horizontal center */
     padding-left: 1rem ;
     border-bottom: 1px solid #0005;
+    position: sticky;
+    top : 0;
+    background: #F0F0F0;
 }
 
 .general-heading h2 , .Account-heading h2 , .Privacy-heading h2 , .Upgradeplans-heading h2 , .Help-heading h2{
@@ -31,25 +35,28 @@
 }
 
 .menusettings-options-container .option-name , .menusettings-options-container .option-action-container{
-    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     padding-left: 1rem ;
 }
 
+.menusettings-options-container .option-name p{
+    width: 100%;
+    text-align: left;
+}
+
 .menusettings-options-container .option-action-container{
+    width: 100%;
     padding-right: 1rem;
     justify-content: right;
 }
 
 
 .option-action-container .toggle{
-    min-width: 4rem;
-    width: auto;
-    height: 2rem;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     align-items: center;
 }
 
@@ -77,3 +84,26 @@
 .menu-actionarrow:hover{
     background-color: #0005;
 }
+
+.help-faq-container{
+    grid-template-columns: 1.9fr 0.1fr;
+
+}
+.menusettings-options-container .option-name .help-question{
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0.2rem;
+    font-size:medium;
+    font-weight: 700;
+}
+
+.accountLoader{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .menusettings-options-container .option-name .help-answer{
+} */

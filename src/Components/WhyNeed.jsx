@@ -16,7 +16,7 @@ export default function Whyneed(){
                     <Faq question={'Q4. How does an AI-or-Not website help in security or trust?'} answer={'A4: By analyzing patterns, metadata, and AI artifacts, it prevents fraud, misinformation, and manipulated media, creating a safer online environment.'}/>
                     <Faq question={'Q5. Why do we need AI detection in the age of advanced AI tools?'} answer={'A5: As AI tools become more powerful, it becomes hard to visually distinguish AI content from real content. An AI-or-Not website provides a quick, reliable way to verify authenticity.'}/>
                 </div>
-                <div className="imagesection">
+                <div className="faq-imagesection">
                     <Image src={'/image/faq.avif'} transform ="perspective(500px) rotateY(0deg)" />
                 </div>
             </div>

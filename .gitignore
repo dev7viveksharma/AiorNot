@@ -26,6 +26,3 @@ dist-ssr
 
 #env file
 .env
-
-#ssl certificate 
-ca.pem

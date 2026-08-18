@@ -44,6 +44,12 @@
     grid-template-columns: repeat(3 , 1fr);
     justify-content: space-evenly;
     text-align: center;
+    
+}
+
+.linkcontainer .links{
+    display: grid;
+    gap: 0.5rem;
 }
 
 .sociallinks{

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "../../Style/ForgetPassword.css";
 import axios from "axios";
-export default function GetEmail({errorfunction , setpage , email , setemail , setisloading}){
+export default function GetEmail({errorfunction , setpage , page , email , setemail , setisloading , sethistory }){
     const [isdisabled , setisdisabled] = useState(true);
     const [error , seterror] = useState(null);
 
@@ -29,6 +29,7 @@ export default function GetEmail({errorfunction , setpage , email , setemail , s
             });
 
             if(response.data.success){
+                sethistory(prev =>{return [...prev , page]});
                 setpage("otp");
             }
         } catch (error) {

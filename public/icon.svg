@@ -1,0 +1,44 @@
+<div style="position: relative; display: inline-block;">
+  
+  <!-- CSS Keyframes for the Floating Animation -->
+  <style>
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float-wrapper {
+      animation: float 4s ease-in-out infinite;
+      position: relative;
+    }
+  </style>
+
+  <!-- Animated Floating Container -->
+  <div class="animate-float-wrapper">
+    <div style="
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(99,102,241,0.3);
+      border-radius: 32px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 60px rgba(99,102,241,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+    ">
+      
+      <!-- Extracted SVG -->
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+        <path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z" stroke="#818cf8" stroke-width="1.5" fill="none"></path>
+        <circle cx="24" cy="24" r="8" fill="rgba(99,102,241,0.2)" stroke="#a5b4fc" stroke-width="1.5"></circle>
+        <path d="M16 12 Q24 8 32 12" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+        <path d="M14 36 Q24 42 34 36" stroke="#c084fc" stroke-width="1.5" stroke-linecap="round" fill="none"></path>
+        <circle cx="24" cy="24" r="2.5" fill="#a5b4fc"></circle>
+        <path d="M30 18 L36 14 M30 18 Q32 22 30 26 M30 26 L36 30" stroke="#818cf8" stroke-width="1.2" stroke-linecap="round" fill="none"></path>
+      </svg>
+
+    </div>
+    
+    <!-- Outer Glow Rings -->
+    <div style="position:absolute; inset:-12px; border-radius:44px; border:1px solid rgba(99,102,241,0.1); pointer-events:none;"></div>
+    <div style="position:absolute; inset:-24px; border-radius:56px; border:1px solid rgba(99,102,241,0.05); pointer-events:none;"></div>
+  </div>
+
+</div>

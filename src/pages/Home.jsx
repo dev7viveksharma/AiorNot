@@ -1,8 +1,9 @@
 import Button from '../Components/Button'
 import Image from '../Components/ImageC';
 import Whyneed from '../Components/WhyNeed';
-import { SiImagedotsc } from "react-icons/si";
+import { SiImagedotsc , SiMusicbrainz} from "react-icons/si";
 import { MdSlowMotionVideo } from "react-icons/md";
+import { TbFileTextAi } from "react-icons/tb";
 import Homevideo from '../Components/Homevideo';
 import '../Style/Home.css'
 
@@ -21,7 +22,7 @@ export default function Home(){
                         It scans pixel structures, lighting behavior, texture accuracy, and AI artifacts to provide a clear
                         authenticity score with a simple, easy-to-read report.
                         </p>
-                        <Button values={"start with Image"} icons={<SiImagedotsc/>} route={'image'}/>
+                        <Button values={"Start with Image"} icons={<SiImagedotsc/>} route={'image'}/>
                     </div>   
                     <div className="postercontainer">
                         <Image src ={'/image/face-recognition-personal-identification-collage.jpg'} transform = "perspective(500px) rotateY(-10deg)"/>
@@ -38,9 +39,32 @@ export default function Home(){
                         It provides a detailed authenticity score and highlights any unusual or synthetic behavior,
                         ensuring complete trust in your video content.
                         </p>                                            
-                        <Button values={"start with Video"} icons={<MdSlowMotionVideo/>} route={'video'}/>                 
+                        <Button values={"Start with Video"} icons={<MdSlowMotionVideo/>} route={'video'}/>                 
                     </div>
                 </div>
+        </section>
+        <section className='mainContainer2'>
+            <div className="mainaContainer2HeadingContainer">
+                <h2>More Advanced Tools To Check Ai Content</h2>
+            </div>
+            <div className="mainContainer2ToolContainer">
+                <div className="textContainer">
+                    <img className='textContainer-img' src="/image/coding-neon-cyberpunk-programmer-work.jpg" loading='lazy' alt="" />
+                <div className="t-info">
+                    <h2>Ai Text Detection</h2>
+                    <p>Our advanced AI detection system analyzes textual patterns and acoustic signatures to instantly verify the authenticity of writing and audio content.</p>
+                    <Button values={"Start with Text"} icons={<TbFileTextAi/>} route={'text'}/>
+                </div>
+            </div>
+            <div className="musicContainer">
+                <img className='musicContainer-img' src="/image/digital-art-portrait-person-listening-music-headphones.jpg" loading='lazy' alt="" />
+                <div className="m-info">
+                    <h2>Ai Music Detection</h2>
+                    <p>Scans documents and code to identify synthetic writing styles, repetitive linguistic patterns, and structural footprints unique to LLMs like ChatGPT.</p>
+                    <Button values={"Start with Music"} icons={<SiMusicbrainz/>} route={'music'}/>
+                </div>
+            </div>
+            </div>
         </section>
         <Whyneed/>
         </>

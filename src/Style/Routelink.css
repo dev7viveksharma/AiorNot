@@ -1,0 +1,15 @@
+.headingList .headerlinks{
+    padding: 0.5rem;
+    border-radius: 0.6rem;
+    background-color: #fff;
+    transition: 0.1s background-color ease-out;
+}
+
+.headingList .headerlinks.Active{
+    background-color: #b5b5b5;
+}
+
+.headingList .headerlinks:hover{
+    background-color: #b5b5b5;
+    transition: 0.1s background-color ease-out;
+}

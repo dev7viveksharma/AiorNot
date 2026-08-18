@@ -11,7 +11,7 @@ dotenv.config();
 
 export const verifyemail = async(req , res) =>{
     const {email} = req.body;
-    console.log(email);
+
     try {
         const url = `select exists( select 1 from AiorNotuser where email = ?) AS value_exists`;
 
@@ -107,7 +107,6 @@ export const ChangePassword = async(req , res) =>{
         const getverification = await redis.get(`${process.env.REDIS_VERIFIED}${email}`);
 
         if(getverification !== "Verified"){
-            console.log(getverification);
             throw new AppError("Verification expired or invalid", 401);
         }
 

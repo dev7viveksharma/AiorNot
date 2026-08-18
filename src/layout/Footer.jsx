@@ -14,8 +14,8 @@ export default function Footer(){
                 <div className="contentcontainer">
                     <div className="linkcontainer">
                         <Link heading={"Company"} links = {[{name : "About us" , link : "aboutus"},{name:"Contact us" , link:"contactus"}]}/>
-                        <Link heading={"Assistive Tools"} links = {[{name : "Image" , link : "image"},{name:"Video" , link:"video"}]}/>
-                        <Link heading={"Resources"} links = {[{name : "About us" , link : "aboutus"},{name:"Contact us" , link:"contactus"}]}/>
+                        <Link heading={"Assistive Tools"} links = {[{name:"Text" , link:"text"},{name : "Image" , link : "image"},{name:"Video" , link:"video"},{name:"Music" , link:"music"}]}/>
+                        <Link heading={"Resources"} links = {[{name : "Modern AI" , link : "ai"}]}/>
                     </div>
                     <div className="sociallinks">
                         <Social route={<FaInstagramSquare/>}/>

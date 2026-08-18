@@ -1,0 +1,18 @@
+.file-video-containe{
+    width: 100%;
+}
+
+.limitheader{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.my-file-section{
+    width: 100%;
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    justify-items: center;
+}

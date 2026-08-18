@@ -1,12 +1,11 @@
 import { db } from "../database/sql.db.js";
 export const UserAction = async (req, res) => {
     const data = req.user;
-    console.log(data);
 
     try {
         if (data.type === "user") {
             const [result] = await db.query(
-                "SELECT email, name FROM AiorNotuser WHERE id = ?",
+                "SELECT * FROM AiorNotuser WHERE id = ?",
                 [data.id]
             );
 
@@ -17,6 +16,9 @@ export const UserAction = async (req, res) => {
             return res.status(200).json({
                 success: true,
                 exist: true,
+                name : result[0].name,
+                email : result[0].email,
+                id : result[0].id
             });
         }
 

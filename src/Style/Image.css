@@ -1,16 +1,26 @@
 .imagesection {
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .imageHeading{
     width: 100%;
-    height: 3rem;
-    text-align: center;
-    margin: 1rem 0;
+    height: 4rem;
+    padding: 2rem 0;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .imageHeading h2{
+    margin: 0;
+    text-align: center;
+    font-size: 2rem;
+    font-style: normal;
+    line-height: 170%;
+    font-family: Poppins-Regular;
     filter: drop-shadow( 0 0 0.7rem #3d45d0);
 
 }
@@ -18,13 +28,12 @@
 .imageselectionsection {
     display: grid;
     grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
     padding: 0.5rem;
-    height: 30rem ;
+    height: 100%;
     width: 60rem;
     margin: 1rem auto;
     filter: drop-shadow(0 0 0.75rem #7168f8);
-    background: #ddd;
     border-radius: 1.2rem;
     overflow: hidden;
 }
@@ -46,11 +55,41 @@
     font-weight: 700;
 }
 
+
 .i-selector {
     grid-column: 1 / 2;
     display: grid;
+    grid-template-columns: 1fr 1fr ;
     grid-template-rows: 0.8fr 0.2fr;
     padding: 0.5rem ;
+    gap: 4rem;
+}
+
+.afterAnalyze{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 0;
+    padding: 2rem;
+}
+
+.poster-img-container{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.poster-img-container img{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    aspect-ratio: 16 / 9;  /* or 4/3, 1/1, etc */
+    overflow: hidden;
+    object-fit:contain;
+    transform : perspective(500px) rotateY(10deg);
+    transition: 0.4s ease;
 }
 
 
@@ -60,6 +99,29 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    flex-direction: column;
+}
+
+.image-input-heading-tag{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 1rem;
+    gap: 1rem;
+
+}
+
+.image-input-heading-tag h4{
+    width: fit-content;
+    height: 2rem;
+    background: #fff;
+    margin: 0;
+    border-radius: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5rem ;
+    color: #3d45d0;
 }
 
 .uploadedimg{
@@ -70,9 +132,11 @@
     margin: auto;
     aspect-ratio: 16 / 9;  /* or 4/3, 1/1, etc */
     overflow: hidden;
+    object-fit: fill;
 }
 
 .submitpanel{
+    grid-column: 1/3;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

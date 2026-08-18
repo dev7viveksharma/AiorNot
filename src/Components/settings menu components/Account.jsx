@@ -3,7 +3,7 @@ import axios from "axios";
 import "../../Style/Settingmenuoptions.css";
 import Optionsection from "../Ui components/Optionsection.jsx";
 import { FaRegUser } from "react-icons/fa";
-import MenuLoading from "../Loaders/MenuLoading.jsx";
+import CircularLoader from "../Loaders/CircularLoader.jsx";
 export default function Account(){
     const [userdata , setuserdata] = useState({
         name : "",
@@ -27,7 +27,7 @@ export default function Account(){
           } catch (error) {
             console.log(error.message);
           }finally{
-            setisloading(false);
+            // setisloading(false);
           }
         }
 
@@ -36,7 +36,9 @@ export default function Account(){
     return(
         <>{
             isloading &&(
-                <MenuLoading/>
+                <div className="accountLoader">
+                    <CircularLoader/>
+                </div> 
             )}
         {!isloading&&(
             <div className="Account-component">

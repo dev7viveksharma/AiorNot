@@ -1,29 +1,21 @@
 import { Navigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useAuth } from "./AuthProvider";
-
+import { useQuery } from "@tanstack/react-query";
 export default function ProtectedRoutes({children}){
-    const {isloading , setisloading} = useAuth();
-    const [isauth , setisauth] = useState(null);
-    useEffect(()=>{
-        const authorise = async() =>{
-            try {
-            const response = await axios.get("auth/routeprotection",{ withCredentials: true });
-            if(response.data.isauth){
-                setisauth(response.data.isauth);
-            }
 
-            } catch (error) {
-                setisauth(false); 
-            }
-            setisloading(false);
-        }
-        authorise();
-        
-    },[]);   
-
-    if(isauth === false){
+    const {data : isauth , isLoading , error} = useQuery({
+        queryKey : ["protectedLink"],
+        queryFn :  async() =>{
+                    try {
+                        const response = await axios.get("auth/routeprotection",{ withCredentials: true });
+                        return response.data.isauth;
+                    } catch (error) {
+                        return false;
+                    }
+                }   
+    });
+    
+    if(error || !isauth && !isLoading){
         return <Navigate to={"/"} replace/>
     }
 

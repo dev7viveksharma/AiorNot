@@ -1,15 +1,18 @@
 import { NavLink } from "react-router-dom";
 import Routelink from "../Components/Routelink";
+import CompanyLogo from "../Components/Ui components/CompanyLogo";
 import { FaRegUser } from "react-icons/fa";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import '../Style/Header.css';
 import { useState , useRef} from "react";
-export default function Header({opencard , opensettings , user , ref}){
+export default function Header({opencard , opensettings , openNotification, user , ref , notificationref , isdot}){
     return (
         <>
         <header className="header">
             <div className="Logo">
                 <NavLink>
-                    <h1>AIorNot</h1>
+                    <CompanyLogo/>
+                    
                 </NavLink>
             </div>
             <div className="headingList">
@@ -27,6 +30,12 @@ export default function Header({opencard , opensettings , user , ref}){
             </div>
             } */}
             <div className="user">
+                {user &&
+                <div className="ai-notification" onClick={openNotification} ref={notificationref}>
+                    <IoMdNotificationsOutline/>
+                    <p className={isdot ?"gotNews" : "noNews" }></p>
+                </div>
+                }
                 <button className={user ? "user-btn" : "unknown-user"} ref={ref} onClick={user ? ()=> opensettings("settingmenu") : ()=>opencard("login")}>{ user ?<FaRegUser/> : "Sign Up"}</button>
             </div>
         </header>

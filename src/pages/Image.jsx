@@ -7,19 +7,19 @@ import Meter from "../Components/Meter";
 import Warning from "../Components/Warning";
 import Collapsable from "../Components/Ui components/Collapsable";
 import Popmessage from "../Components/Ui components/Popmessage";
-import { useAuth } from "../AuthProvider";
 import { TbAnalyze } from "react-icons/tb";
 import { MdOutlineChangeCircle } from "react-icons/md";
 import { HiBadgeCheck } from "react-icons/hi";
 import { BiErrorAlt, BiSolidErrorAlt } from "react-icons/bi";
 import { useOutletContext } from "react-router-dom";
 import '../Style/Image.css';
+import PageLoading from "../Components/PageLoading";
 export default function Image(){
-    const {setisloading} = useAuth();
     const {popup , setpopup } = useOutletContext();
     const refimage = useRef(null);
     const inputref = useRef(null);
     const containeradjust = useRef(null);
+    const [isloading , setisloading] = useState(false);
     const [isanalyze , setisanalyze] = useState(false);
     const [showpanel , setshowpanel] = useState(false);
     const [apiresponse , setapiresponse] = useState(null);
@@ -69,11 +69,11 @@ export default function Image(){
         } catch (error) {
            const errorMessage = error.response?.data?.message || error.message;
            setpopup(prev => ({
-            ...prev,
-            show: true,
-            message : errorMessage ,
-            icon : <BiErrorAlt/>,
-            type : "error"
+                ...prev,
+                show: true,
+                message : errorMessage ,
+                icon : <BiErrorAlt/>,
+                type : "error"
             }));
             
         }finally{
@@ -118,7 +118,10 @@ export default function Image(){
     return(
         <>
         {popup.show &&
-        <Popmessage message={popup.message} icon={popup.icon} onclose={() =>setpopup(prev => ({ ...prev, show: false }))} type={popup.type}/>
+            <Popmessage message={popup.message} icon={popup.icon} onclose={() =>setpopup(prev => ({ ...prev, show: false }))} type={popup.type}/>
+        }
+        {isloading &&
+            <PageLoading/>
         }
         <section className="imagesection">
             <div className="imageHeading">
@@ -136,10 +139,23 @@ export default function Image(){
                     </p>
                 )}
                 </div>
-                <div className="i-selector">
+              
+                <div className={`i-selector ${isanalyze ? "afterAnalyze":""}`}>
+                { !isanalyze &&
+                    <div className="poster-img-container">
+                        <img src="/image/cybersecurity-concept-illustration.jpg" alt="" />
+                    </div>
+                }
                     <div className="imageinput">
+                        {
+                            !showpanel &&
+                            <div className="image-input-heading-tag">
+                                <h4>Ai Image Detection</h4>
+                                <h4>Fake Detection</h4>
+                            </div>
+                        }
                         <FirstInput action={handleimageselection} ref={inputref} Filetype={'image/*'}/>
-                        <img  className ="uploadedimg" src="/image/face-recognition-personal-identification-collage.jpg" alt="" ref={refimage}/>
+                        <img  className ="uploadedimg" ref={refimage}/>
                     </div>
                     { showpanel &&
                     <div className="submitpanel">
@@ -156,22 +172,22 @@ export default function Image(){
                         <div className="stats-container">
                             <div className="resultprobability">
                                 <div className="ai-probability">
-                                    <Meter percentage={apiresponse.ai_probability * 100}/>
+                                    <Meter percentage={apiresponse.ai_probability}/>
                                     <p>AI Probability</p>
                                 </div>
                                 <div className="human-probability">
-                                    <Meter percentage={apiresponse.real_probability * 100}/>
+                                    <Meter percentage={apiresponse.real_probability}/>
                                    <p> Human Probability</p>
                                 </div>
                             </div>
                             <div className="image-stats-details">
                                  <div className="stats-block">
                                     <h3>Prediction :</h3>
-                                    <p>Real</p>
+                                    <p>{apiresponse?.prediction}</p>
                                 </div>
                                 <div className="stats-block">
                                     <h3>Certainty Level :</h3>
-                                    <p>Meduim</p>
+                                    <p>{apiresponse?.certainity_level}</p>
                                 </div>
                             </div>
                         </div>

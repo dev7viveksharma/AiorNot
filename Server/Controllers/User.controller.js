@@ -1,7 +1,11 @@
 import {db} from "../database/sql.db.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { getGuestFromDB } from "../Services/Guest.service.js";
 import { generateToken } from "../Utility/TokenGeneration.util.js";
 import { User } from "../Models/UserAccount.model.js";
+import { createGuestCookie } from "../Middleware/identifyuser.js";
+import { getGuestFromIP } from "../Services/Guest.service.js";
 import {v4 as uuidv4} from "uuid";
 
 export const signup = async (req, res) => {
@@ -61,7 +65,6 @@ export const signup = async (req, res) => {
 
 export const login = async(req , res)=>{
     const {email  , password , rememberMe} = req.body;
-    console.log(req.body);
     try {
         const query = "Select * from AiorNotuser where email = ?";
         const [result] = await db.query(query , [email]);
@@ -76,7 +79,7 @@ export const login = async(req , res)=>{
                         name : user.name,
                         email : user.email,
                     };
-                    console.log("after payload");
+                    
                     const ismatched = await bcrypt.compare(password , user.password);
                     const expiryTime = rememberMe===true ? "7d"  : "1h"; 
                     if(ismatched){
@@ -84,12 +87,12 @@ export const login = async(req , res)=>{
                         res.cookie("AiorNotToken" , generateToken(payload , expiryTime )
                             , rememberMe === true ? {
                                 httpOnly : true,
-                                secure : false, //should be true before production
+                                secure : true, //should be true before production
                                 sameSite : "strict",
                                 maxAge : 7 * 24 * 60 * 60 *1000
                             } :{
                                 httpOnly : true,
-                                secure : false, //should be true before production
+                                secure : true, //should be true before production
                                 sameSite : "strict", 
                             }
                         );
@@ -97,7 +100,9 @@ export const login = async(req , res)=>{
                         console.log("before success of login");
                         return res.status(200).json({
                             success : true,
-                            islogin : true,    
+                            islogin : true,  
+                            name : payload.name,
+                            email : payload.email, 
                         });
                     }else{
                         return res.status(401).json({
@@ -113,7 +118,7 @@ export const login = async(req , res)=>{
     }
 }
 
-export const logout = (req , res) =>{
+export const logout = async(req , res) =>{
 try {
         const islogin = req.cookies.AiorNotToken;
         if(islogin){
@@ -122,7 +127,56 @@ try {
                 secure : false, //should be true before production
                 sameSite : "strict",
             });
-    
+
+            const user_agent = req.get("user_agent");
+              
+            if (req.cookies?.guest_id) {
+               try {
+                  const decoded = jwt.verify(req.cookies.guest_id , process.env.JWT_SECRET);
+                  const guest = await getGuestFromDB(decoded.id);
+                  if (!guest) {
+                    const error = new Error("cookies are forged");
+                    error.code = "401";
+                    error.name = "forging";
+                    throw error;
+                  }
+                  req.user = { type: "guest", id: guest.guest_id };
+                  return res.status(200).json({
+                        success : true,
+                        logout : false
+                    });
+               } catch (error) {
+                if(error.name === "TokenExpiredError"){
+                  res.clearCookie("guest_id");
+                }
+                else if(error.name === "forging"){
+                    throw error;
+                }else{
+                  const newError = new Error("something went wrong in checking guest cookie");
+                  newError.code = "400";
+                  throw newError;
+                }
+               }
+              }
+            
+              //  Optional: Guest via IP (fallback / analytics only)
+              const guestByIP = await getGuestFromIP(req.ip); // return first match or log
+              if (guestByIP) {
+                req.user = { type: "guest", id: guestByIP.guest_id };
+                createGuestCookie(req , res , guestByIP.guest_id);
+                return res.status(200).json({
+                        success : true,
+                        logout : false
+                });
+              }
+              
+              // 3️⃣ First-time visitor → create guest
+              const newGuest = await createGuest(req.ip , user_agent);
+              createGuestCookie(res , req , newGuest.guest_id);
+              req.user = {
+                type: "guest",
+                id: newGuest.guest_id
+              };
             return res.status(200).json({
                         success : true,
                         logout : false
@@ -130,7 +184,15 @@ try {
         }
     
         throw new Error("unauthorized user");
-    } catch (error) {
-        res.status(401).json({success : false , message : error.message})
+    }catch (error) {
+        console.log(error);
+        console.log(error.name);
+        console.log(error.message);
+
+        res.status(error.code || 500).json({
+            success: false,
+            message: error.message,
+            name: error.name
+        });
     }
 }

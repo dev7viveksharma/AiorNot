@@ -1,10 +1,17 @@
+import CircularLoader from './Loaders/CircularLoader';
 import '../Style/stats.css';
-export default function Stats({value , topic}){
+export default function Stats({value , topic , isLoading}){
     return(
         <>
         <div className="stats-box">
-            <h1>{value}+</h1>
-            <p>{topic}</p>
+            { isLoading ? (
+                <CircularLoader/>
+            ):(
+            <>
+                <h1>{value}+</h1>
+                <p>{topic}</p>
+            </>
+            )}
         </div>
         </>
     )

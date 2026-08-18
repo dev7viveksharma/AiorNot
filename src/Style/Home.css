@@ -5,6 +5,15 @@
     grid-template-rows: 1fr 1fr;
 }
 
+.mainContainer2{
+    height: 40rem;
+    width: calc(100% - 4rem);
+    display: grid;
+    grid-template-rows: 0.5fr 1.5fr;
+    margin: 2rem;
+    gap: 2rem;
+}
+
 .imagecontainer , .videocontainer{
     height: fit-content;
     display: grid;
@@ -15,8 +24,9 @@
     justify-content: space-between;
     border-radius: 1.2rem;
     border: 1px dashed transparent;
-    transition: border-color 0.2s ease-in;
+    transition: 0.3s box-shadow ease-out;
 }
+
 .videocontainer{
     text-align: right;
 }
@@ -51,10 +61,96 @@
 }
 
 .videocontainer:has(button:hover), .imagecontainer:has(button:hover){
-    border: 1px dashed rgb(89, 89, 89);
-    transition: 0.2s border ease-in;
+    box-shadow:  0 0 10px 0 rgb(0, 0, 0 , 0.5);
+    transition: 0.3s box-shadow ease-in;
+}
+
+.mainContainer2 .mainaContainer2HeadingContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mainaContainer2HeadingContainer h2{
+    font-size: 2.5rem;
+    font-style: normal;
+    line-height: 120%;
+    text-align: center;
+    font-family: Poppins-Bold, sans-serif;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(66%, #321c5a), to(#8e82a4));
+    background: -webkit-linear-gradient(top, #321c5a 66%, #8e82a4);
+    background: -moz-linear-gradient(top,#321c5a 66%,#8e82a4 100%);
+    background: linear-gradient(180deg, #321c5a 66%, #8e82a4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.mainContainer2 .mainContainer2ToolContainer{
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
 }
 
 
+.textContainer, .musicContainer {
+    width: 100%;
+    height: 30rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure the image behaves inside the flex parent */
+.textContainer .textContainer-img ,.musicContainer .musicContainer-img{
+    width: 80%;
+    height: 30rem;
+    margin: auto;
+    aspect-ratio: 16 / 9;  /* or 4/3, 1/1, etc */
+    object-fit :cover;
+    box-shadow:  0 0 20px 0 rgb(0 , 0 , 0 );
+    border-radius: 1.2rem;
+}
 
 
+.textContainer .t-info , .musicContainer .m-info{
+    position: absolute;
+    top: 10rem;
+    width: 50%;
+    height: 15rem;
+    background-color:#f8f8f8;
+    border-radius: 1.2rem;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255);
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    transition: width 0.3s ease-out , height 0.3s ease-out;   
+}
+
+.t-info p , .m-info p{
+    text-align: justify;
+    padding: 0.5rem;
+    font-weight: 700;
+}
+
+.t-info h2 , .m-info h2{
+    color: #262854;
+    font-size: x-large;
+    transition: 0.3s font-size ease-in;
+}
+
+.t-info:hover, .m-info:hover{
+    width: 80%;
+    height: 20rem;
+    transition: width 0.3s ease-in , height 0.3s ease-in
+}
+
+.t-info:has(button:hover) h2 , .m-info:has(button:hover) h2{
+    font-size: 2rem;
+    transition: 0.3s font-size ease-in;
+}

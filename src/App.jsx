@@ -14,6 +14,7 @@ import Contactus from "./pages/Contactus";
 import Usercard from "./Components/Usercard";
 import PageLoading from "./Components/PageLoading.jsx";
 import MyFile from "./pages/MyFile.jsx";
+import MediaDetails from "./pages/MediaDetail.jsx";
 import Settingcard from "./Components/Settingcard.jsx";
 import ProtectedRoutes from "./ProtectedRoutes.jsx";
 import ForgetPassword from "./pages/ForgetPassword.jsx";
@@ -30,12 +31,12 @@ function App() {
 
   const cardcomponents = {
     login : <Usercard card = {opencard}/>,
-    settingmenu : <Settingcard opencard ={opencard}/>
+    settingmenu : <Settingcard opencard ={opencard}/>,
   }
   const router = createBrowserRouter([
     {
       path : '/',
-      element : <Applayout opencard = {opencard}  user={islogin} opensettingmenu = {opencard}/>,
+      element : <Applayout opencard = {opencard}  user={islogin}/>,
       errorElement : <Errorpage/>,
       children : [
                 {
@@ -78,6 +79,12 @@ function App() {
                     <MyFile/>
                    </ProtectedRoutes>
         },
+        {
+          path : 'media/:mediaType/:id/:mediaid',
+          element :<ProtectedRoutes>
+                   <MediaDetails/>
+                  </ProtectedRoutes>
+        }
       ]
 
   },{
