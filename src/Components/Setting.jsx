@@ -1,4 +1,3 @@
-import "../Style/Setting.css";
 import { useNavigate } from "react-router-dom";
 import Settingbtn from "./Settingbtn";
 import { useAuth } from "../AuthProvider.jsx";
@@ -9,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import MenuLoading from "./Loaders/MenuLoading.jsx";
 import { FaRegUser } from "react-icons/fa";
+import "../Style/Setting.css";
 
 export default function Setting({opensettings}){
     const queryClient =  useQueryClient();

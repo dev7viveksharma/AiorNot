@@ -1,6 +1,6 @@
 import "../Style/Settingcard.css";
 import { IoMdClose } from "react-icons/io";
-import { useEffect, useRef, useState } from "react";
+import {useState} from "react";
 import Settingbtn from "./Settingbtn";
 import General from "./settings menu components/General";
 import Account from "./settings menu components/Account";

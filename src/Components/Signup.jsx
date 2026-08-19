@@ -3,7 +3,6 @@ import { FaGoogle } from "react-icons/fa";
 import Input from "./Input";
 import OrDivider from "./OrDivider";
 import OauthBtn from "./OauthBtn";
-import { useState } from "react";
 
 
 export default function Signup({userdata , setuserdata , insertuserdata , usernameauthentication , useremailauthentication , userpasswordauthentication , name , email , password , serverError ,disablebtn , switchToLogin}){

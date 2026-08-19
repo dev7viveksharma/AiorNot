@@ -1,5 +1,5 @@
 import CircularLoader from './Loaders/CircularLoader';
-import '../Style/stats.css';
+import '../Style/Stats.css';
 export default function Stats({value , topic , isLoading}){
     return(
         <>
