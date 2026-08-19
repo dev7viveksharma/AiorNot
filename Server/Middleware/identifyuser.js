@@ -8,7 +8,8 @@ dotenv.config();
 export const createGuestCookie = (req , res , idvalue)=>{
     res.cookie("guest_id", generateToken({id : idvalue}, "3h"),{
         httpOnly: true,
-        sameSite: "lax"
+        secure : true,
+        sameSite : "none"
     });
 }
 

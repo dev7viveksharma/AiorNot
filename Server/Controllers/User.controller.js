@@ -88,12 +88,12 @@ export const login = async(req , res)=>{
                             , rememberMe === true ? {
                                 httpOnly : true,
                                 secure : true, //should be true before production
-                                sameSite : "strict",
+                                sameSite : "none",
                                 maxAge : 7 * 24 * 60 * 60 *1000
                             } :{
                                 httpOnly : true,
                                 secure : true, //should be true before production
-                                sameSite : "strict", 
+                                sameSite : "none", 
                             }
                         );
 

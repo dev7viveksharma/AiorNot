@@ -12,10 +12,6 @@ axios.defaults.baseURL = import.meta.env.PROD
 
 axios.defaults.withCredentials = true;
 
-console.log("PROD:", import.meta.env.PROD);
-console.log("SERVER:", import.meta.env.VITE_SERVER_URL);
-console.log("AXIOS BASE:", axios.defaults.baseURL);
-
 const queryclient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
