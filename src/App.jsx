@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import Image from "./pages/Image.jsx";
 import Ai from "./pages/Ai";
 import Text from "./pages/Text";
-import Video from "./pages/video";
+import Video from "./pages/Video";
 import Music from "./pages/Music.jsx";
 import Aboutus from "./pages/Aboutus";
 import Contactus from "./pages/Contactus";
