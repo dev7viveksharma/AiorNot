@@ -124,8 +124,8 @@ try {
         if(islogin){
             res.clearCookie("AiorNotToken",{
                 httpOnly : true,
-                secure : false, //should be true before production
-                sameSite : "strict",
+                secure : true, //should be true before production
+                sameSite : "none",
             });
 
             const user_agent = req.get("user_agent");
@@ -147,7 +147,11 @@ try {
                     });
                } catch (error) {
                 if(error.name === "TokenExpiredError"){
-                  res.clearCookie("guest_id");
+                  res.clearCookie("guest_id",  {      
+                        httpOnly: true,
+                        secure : true,
+                        sameSite : "none"
+                    });
                 }
                 else if(error.name === "forging"){
                     throw error;
